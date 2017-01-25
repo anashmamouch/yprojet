@@ -1,0 +1,59 @@
+page-parrain {
+
+.parrain-title {
+ font-family: 'lato-bold-webfont';
+ font-size: 1.8rem !important;
+ color: #666;
+}
+	
+.parrain-subtitle {
+ font-family: 'lato-bold-webfont';
+ font-size: 1.4rem !important;
+ color: #666;
+}
+	
+.parrain-info {
+ font-family: 'lato-regular-webfont';
+ letter-spacing: 0.05rem;
+ font-size: 1.2rem;
+ color: #666;
+}
+
+.image-profil {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  position: relative;
+  margin-bottom: 20px;
+}
+	
+.segment {
+ width: auto;
+ border-bottom: 0.55px solid #EDEDED;
+}	
+		
+.segment-ios .segment-button, .segment-md .segment-button {
+ margin: 10px 0;
+ border: none;
+ height: 3.2rem;
+ font-family: 'lato-bold-webfont';
+ font-size: 1.2rem;
+ line-height: 3.2rem;
+ text-transform: uppercase;
+ letter-spacing: 0.05rem;
+ color: #EDEDED;
+ background: transparent;
+ border-radius: 0;
+}
+
+.segment-ios .segment-button.segment-activated, .segment-md .segment-button.segment-activated  {
+ color: #333;
+ background: transparent;
+ border-radius: 0;
+}	
+
+
+}
+

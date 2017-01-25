@@ -1,0 +1,46 @@
+<!--
+  Generated template for the PacksHistorique page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+
+    <ion-title>Historique</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  
+  <!--begin segments-->
+  <ion-segment [(ngModel)] = "segment">
+    <ion-segment-button value="packs" (ionSelect)="selectPacks()">
+      Mes Bundles
+    </ion-segment-button>
+    <ion-segment-button value="historiquepacks" (ionSelect)="selectHistorique()">
+      Historique
+    </ion-segment-button>
+  </ion-segment>
+  <!--end segment-->
+
+
+  <ion-list class="margin-top">
+	  
+    <ion-item *ngFor="let pack of packs; let i = index">
+	  <h5>{{pack.nom}}</h5>
+      <p>Du {{pack.date_debut_abonnement}} Au {{pack.date_fin_abonnement}}</p>
+      <h6>Montant facture : {{pack.facture}} €</h6>  
+      <!--Statut: {{pack.upgrade}}-->
+    </ion-item>
+	
+  
+  </ion-list>
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/eb5d949792ca794e39d50c92d3e585d02b89a04b/amcharts/AmCharts.d.ts",
+    "raw": "registry:dt/amcharts#0.0.0+20160909114300",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/eb5d949792ca794e39d50c92d3e585d02b89a04b/amcharts/AmCharts.d.ts"
+  }
+}

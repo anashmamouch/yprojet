@@ -1,0 +1,98 @@
+<!--
+  Generated template for the Parrain page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Mon Sponsor</ion-title>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content class="background-grey">
+
+  <!--begin segments-->
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="profile" (ionSelect)="selectProfile()">
+        Mon Profil
+      </ion-segment-button>
+      <ion-segment-button value="equipe" (ionSelect)="selectEquipe()">
+        Mon équipe
+      </ion-segment-button>
+      <ion-segment-button value="sponsor" (ionSelect)="selectParrain()">
+        Mon sponsor
+      </ion-segment-button>
+    </ion-segment>
+  <!--end segment-->
+
+  <ion-list>
+
+    <ion-item class="background-grey" margin-top padding>
+
+    <ion-grid>
+      <ion-row>
+          <ion-col width-25 text-center center><button (click)="call()" ion-button icon-only round outline><ion-icon name="ios-call-outline"></ion-icon></button>
+          </ion-col>
+          <ion-col width-50 text-center center margin-top>
+            <div class="center image-profil" margin-top [style.background-image]= "trustUrlImage"></div>
+            <div class="parrain-title">{{parrain.nomParrain}}</div>
+            <div class="parrain-subtitle">Identifiant : #{{parrain.idParrain}}</div>
+            <div class="parrain-info"><ion-icon name="ios-pin-outline"></ion-icon> {{parrain.adresseParrain}}</div>
+          </ion-col>
+          <ion-col width-25 text-center center><button (click)="sendSMS()" ion-button icon-only round outline><ion-icon name="ios-mail-outline"></ion-icon></button>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    </ion-item>
+
+    <ion-item padding>
+
+    <ion-grid>
+        <ion-row>
+          <ion-col center text-center class="parrain-info">
+            <ion-icon name="heart-outline"></ion-icon>
+            {{parrain.dateNaissanceParrain}}
+          </ion-col>
+          <ion-col center text-center class="parrain-info">
+            <ion-icon name="ios-calendar-outline"></ion-icon>
+            {{dateInscriptionParrain | date: 'dd/MM/yyyy'}}
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    </ion-item>
+
+
+    <!--telephone Parrain
+    <ion-item>
+      {{parrain.telephoneParrain}}
+    </ion-item>-->
+
+    <!--email Parrain
+    <ion-item>
+      {{parrain.emailParrain}}
+    </ion-item>-->
+
+    <!--date de naissance
+    <ion-item>
+      {{parrain.dateNaissanceParrain}}
+    </ion-item>-->
+
+    <!--date d'inscription
+    <ion-item>
+      {{dateInscriptionParrain | date: 'dd/MM/yyyy'}}
+    </ion-item>-->
+  </ion-list>
+
+</ion-content>

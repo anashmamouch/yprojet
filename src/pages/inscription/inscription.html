@@ -1,0 +1,101 @@
+<!--
+  Generated template for the Inscription page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Inscription</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+<div [formGroup] = "inscriptionForm">
+
+  <ion-list class="inscription">
+
+    <!--Nom-->
+    <ion-item>
+      <ion-label fixed>Nom</ion-label>
+      <ion-input type="text" formControlName="nom" [(ngModel)]="user.nom" name="nom"></ion-input>
+    </ion-item>
+
+    <!--Prenom-->
+    <ion-item>
+      <ion-label fixed>Prénom</ion-label>
+      <ion-input type="text" formControlName="prenom" [(ngModel)]="user.prenom" name="prenom"></ion-input>
+    </ion-item>
+
+    <!--Telephone-->
+      <ion-item>
+        <ion-label fixed>Téléphone</ion-label>
+        <ion-input type="text" formControlName = "telephone" [(ngModel)]="user.telephone" name="telephone"></ion-input>
+      </ion-item>
+
+      <!--Email-->
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input type="email" formControlName="email" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+
+      <!--Confirmer Email-->
+      <ion-item>
+        <ion-label fixed>Confirmer email</ion-label>
+        <ion-input type="email" formControlName="confirmEmail" [(ngModel)]="user.confirmEmail" name="confirmEmail"></ion-input>
+      </ion-item>
+
+
+	    <ion-list-header>
+    	  Ma localisation
+  	  </ion-list-header>
+
+      <!--Code Postal-->
+      <ion-item>
+        <ion-label fixed>Code Postal</ion-label>
+        <ion-input type="text" formControlName="codePostal" [(ngModel)]="user.codePostal" name="codePostal"></ion-input>
+      </ion-item>
+
+      <!--Ville-->
+      <ion-item>
+        <ion-label fixed>Ville</ion-label>
+        <ion-input type="text" formControlName="ville" [(ngModel)]="user.ville" name="ville"></ion-input>
+      </ion-item>
+
+	   <ion-list-header>
+    	Mon Identité
+  	  </ion-list-header>
+      <!--Date de naissance-->
+      <ion-item>
+        <ion-label fixed>Date de naissance</ion-label>
+        <ion-datetime cancelText="Annuler" doneText="Confirmer" formControlName="dateNaissance" displayFormat="DD/MM/YYYY" [(ngModel)]="user.dateNaissance" name="dateNaissance"></ion-datetime>
+      </ion-item>
+
+	    <ion-list-header>
+    	  Votre Parrain
+  	  </ion-list-header>
+      <!--ID Parrain-->
+      <ion-item>
+        <ion-label fixed>ID Parrain</ion-label>
+        <ion-input type="text" formControlName="idParrain" [(ngModel)]="user.idParrain" name="idParrain"></ion-input>
+      </ion-item>
+
+      <!--Nom Parrain-->
+      <ion-item>
+        <ion-label fixed>Nom Parrain</ion-label>
+        <ion-input type="text" formControlName="nomParrain" [(ngModel)]="user.nomParrain" name="nomParrain"></ion-input>
+      </ion-item>
+
+   </ion-list>
+</div>
+<div padding-horizontal padding-bottom>
+   <p class="small" text-center>En cliquant sur inscription, vous certifiez être majeur et acceptez les conditions générales d'inscription</p>
+   <button (click)= "inscrireMembre()" [disabled]="!inscriptionForm.valid" ion-button block round class="action-button">Inscription</button>
+</div>
+</ion-content>

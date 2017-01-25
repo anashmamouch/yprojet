@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mon Bundle</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bundle-background">
+	
+	<div class="card-background-page">
+		
+    <ion-list>
+      <ion-item *ngFor="let res of response; let i = index" >
+            <ion-card [@fadeInLeft] = "fadeInLeftState[i]" [style.border-width] = "borderWidth[i]" [style.border-style] = "borderStyle[i]" [style.border-color] = "borderColor[i]">
+                <img [src]="images[i]" />
+                <!--<div class="card-title">{{res.nom_pack}}</div>-->
+                <!--<div class="card-info">Revente des datas <br/> Reporting <br/> Développement de son organisation <br/> Coefficient de rémunération : 0,1</div>-->
+                <!--<div class="card-price">{{prixPacks[i]}}</div>-->
+                <div class="card-action" padding>
+                <button (click) = "onClickPack(res)" ion-button center round outline [color]="colors[i]">
+                    {{prixPacks[i]}}
+                </button>
+                <button (click) = "onClickDetails(res)" ion-button center round outline color = "fresh"> Details </button>
+                </div>
+            </ion-card>
+      </ion-item>
+    </ion-list>
+
+     
+
+    <input type="text" hidden = "true" #input />
+	</div>
+	
+</ion-content>

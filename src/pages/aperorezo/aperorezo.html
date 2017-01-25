@@ -1,0 +1,28 @@
+<!--
+  Generated template for the Aperorezo page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>aperorezo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor = "let apero of aperosrezo">
+      {{ apero.planning_jour_semaine }} {{apero.jour_du_mois}} {{apero.planning_mois_de_annee}} {{apero.planning_heure}} <br/>
+      {{ apero.endroit }}<br/>
+      {{ apero.adresse }}<br/>
+      Animé par: <strong>{{ apero.presentateur }}</strong>
+
+    </ion-item>
+  </ion-list>
+</ion-content>

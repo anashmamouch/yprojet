@@ -1,0 +1,32 @@
+<!--
+  Generated template for the Filleuls page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mes filleuls</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+	
+	<ion-list-header>
+    Mes filleuls de Niveau 1
+  	</ion-list-header>	
+	
+<ion-list>
+  <button ion-item *ngFor="let f of filleuls; let i = index"  (click)="goToProfile(i)">
+	<ion-avatar item-left>
+      <img [src]="images[i]">
+    </ion-avatar>
+  
+      {{f.first_name}} {{f.last_name}}
+
+  </button>
+</ion-list>
+	
+</ion-content>

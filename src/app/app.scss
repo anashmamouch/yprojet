@@ -1,0 +1,442 @@
+// http://ionicframework.com/docs/v2/theming/
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@font-face {
+    font-family: 'lato-regular-webfont';
+    src: url('../assets/fonts/lato-regular-webfont.eot');
+    src: url('../assets/fonts/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/lato-regular-webfont.woff2') format('woff2'),
+         url('../assets/fonts/lato-regular-webfont.woff') format('woff'),
+         url('../assets/fonts/lato-regular-webfont.ttf') format('truetype'),
+         url('../assets/fonts/lato-regular-webfont.svg#lato-regular-webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'lato-light-webfont';
+    src: url('../assets/fonts/lato-light-webfont.eot');
+    src: url('../assets/fonts/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/lato-light-webfont.woff2') format('woff2'),
+         url('../assets/fonts/lato-light-webfont.woff') format('woff'),
+         url('../assets/fonts/lato-light-webfont.ttf') format('truetype'),
+         url('../assets/fonts/lato-light-webfont.svg#lato-light-webfont') format('svg');
+    font-weight: lighter;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'lato-bold-webfont';
+    src: url('../assets/fonts/lato-bold-webfont.eot');
+    src: url('../assets/fonts/lato-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/lato-bold-webfont.woff2') format('woff2'),
+         url('../assets/fonts/lato-bold-webfont.woff') format('woff'),
+         url('../assets/fonts/lato-bold-webfont.ttf') format('truetype'),
+         url('../assets/fonts/lato-bold-webfont.svg#lato-bold-webfont') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+p {
+ font-family: 'lato-regular-webfont';
+ letter-spacing: 0.05rem;
+ font-size: 1.3rem !important;
+}
+h3 {
+ font-family: 'lato-light-webfont';
+ letter-spacing: 0.05rem;
+ font-size: 2rem !important;
+}
+h6 {
+ font-family: 'lato-bold-webfont';
+ letter-spacing: 0.05rem;
+ font-size: 1.1rem !important;
+}
+.title {
+ text-transform: uppercase !important;
+}
+.bold {
+ font-weight: bold !important;
+}
+.small {
+ font-size: 1.2rem !important;
+ font-family: 'lato-light-webfont' !important;
+}
+.center{
+  margin: 10px auto;
+  position: relative;
+}
+.no-padding {
+ padding: 0 !important;
+}
+.no-margin {
+ margin: 0 !important;
+}
+.no-border {
+ border-bottom: 0 !important;
+ border-top: 0 !important;
+}
+.margin-top {
+ margin-top: 20px !important;
+}
+.margin-bottom {
+ margin-bottom: 20px !important;
+}
+.transparent {
+ background: transparent !important;
+}
+.item-block {
+ border-top: none !important;
+}
+.toolbar-title-ios {
+ font-size: 1.5rem;
+ font-family: 'lato-bold-webfont';
+ letter-spacing: 0.05rem;
+}
+.label-ios, label-md {
+ margin: 0;
+}
+
+.menu {
+ background: #242424 !important;
+}
+.menu .item {
+ background: transparent;
+}
+.menu .item-block {
+ border-bottom: none !important;
+}
+.menu .item-inner {
+ color: #fff;
+ font-family: 'lato-regular-webfont';
+ text-transform: uppercase;
+ letter-spacing: 0.1rem;
+ font-size: 1.3rem !important;
+ background-image: none !important;
+ border-bottom: none !important;
+ border-top: none !important;
+}
+.menu .item-ios.activated, .menu .item-md.activated {
+ border-left: 2px solid #abfed8;
+}
+.menu-avatar {
+ background: #303030;
+ color: #fff !important;
+ font-family: 'lato-bold-webfont' !important;
+ letter-spacing: 0.05rem;
+ text-transform: uppercase;
+}
+.menu-avatar .item-inner {
+ border-bottom: none !important;
+ background-image: none !important;
+}
+.menu-content-reveal {
+ box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25) !important;
+}
+.custom-nav {
+ padding: 0 !important;
+}
+.custom-nav button {
+ font-family: 'lato-bold-webfont';
+ color: #5d5f60;
+ border-bottom: 0.55px solid #EDEDED !important;
+}
+.custom-nav button.activated {
+ color: #fff !important;
+}
+.custom-nav .item-inner {
+ border-top: none !important;
+ border-bottom: none !important;
+}
+.text-input::-moz-placeholder {
+ color: #b2b2b2;
+}
+.text-input:-ms-input-placeholder {
+ color: #b2b2b2;
+}
+.text-input::-webkit-input-placeholder {
+ text-indent: 0;
+ color: #b2b2b2;
+}
+.text-input-ios, .text-input-md  {
+ margin: 10px;
+ font-size: 1.3rem;
+}
+.list-ios > .item-block:last-child, .list-md > .item-block:last-child, {
+ border-bottom: none;
+}
+.item-ios, .item-md {
+ color: #303030;
+ font-family: 'lato-regular-webfont';
+ text-transform: uppercase;
+ font-size: 1.1rem;
+ padding-left: 15px;
+ padding-right: 15px;
+}
+.item-ios.activated, .item-md.activated {
+ background: #222;
+ color: #fff;
+}
+.item-ios.item-block .item-inner, .item-md.item-block .item-inner {
+ padding-right: 0;
+}
+ion-label[fixed] {
+ min-width: 140px;
+ max-width: 200px;
+}
+.input-ios .text-input, .input-md .text-input {
+ padding-right: 0;
+}
+.action-button {
+ font-family: 'lato-regular-webfont';
+ font-size: 1.4rem;
+ background: linear-gradient(to right, rgba(24,28,154,1) 0%,rgba(204,43,158,1) 100%); 
+ color: #fff;
+ text-transform: uppercase;
+}
+.button-ios, .button-md {
+ font-family: 'lato-bold-webfont';
+ letter-spacing: 0.05rem;
+}
+.button-full-ios, .button-full-md {
+ background: linear-gradient(to right, rgba(24,28,154,1) 0%,rgba(204,43,158,1) 100%); 
+ color: #fff;
+ font-family: 'lato-regular-webfont';
+ margin: 0;
+}
+.list-header-ios, .list-header-md {
+ background: #fafafa !important;
+ font-family: 'lato-bold-webfont' !important;
+ font-size: 1.1rem !important;
+ text-transform: uppercase;
+ margin-bottom: 0;
+}
+.item-ios ion-note, .item-md ion-note {
+ font-family: 'lato-regular-webfont' !important;
+ font-size: 1.6rem;
+ color: #4e00ff; 
+ padding-right: 5px;
+}
+#map-detail {
+ width: 100%;
+ height: 800px !important;
+}
+
+
+
+
+
+
+/* BEGIN CHAT STYLES */
+
+.primary-bg {
+  background-color: color($colors, primary);
+}
+
+.secondary-bg {
+  background-color: color($colors, secondary);
+}
+
+.gray-bg {
+  background-color: color($colors, gray);
+}
+
+.light-bg {
+  background-color: color($colors, light);
+}
+
+.common-bg {
+  background-color: color($colors, common-bg);
+}
+
+.white-bg {
+  background-color: color($colors, white);
+}
+
+.restaurant-bg {
+  background-color: color($colors, restaurant-color);
+}
+
+.hotel-bg {
+  background-color: color($colors, hotel-color);
+}
+
+.attraction-bg {
+  background-color: color($colors, attraction-color);
+}
+
+.padding-xs {
+  padding: 10px;
+}
+
+.round {
+  border-radius: 5px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+// text size
+.text-2x {
+  font-size: 2em;
+}
+
+.text-1x {
+  font-size: 1em;
+}
+
+.text-sm {
+  font-size: 0.7em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+// position
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.rlt {
+  position: relative;
+}
+
+.clear,
+.cf {
+  clear: both;
+}
+
+.align-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.border-bottom {
+  border-bottom: 1px solid color($colors, border-color);
+}
+
+// badge style
+ion-badge {
+  &.square {
+    border-radius: 0;
+  }
+}
+
+// card style
+.card {
+  background: #FFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+// navbar style
+ion-navbar.no-border {
+
+  .toolbar-background {
+    border: none;
+  }
+}
+
+// transparent nav bar
+ion-header.nav-transparent {
+  &.header-md:after {
+    background: none;
+  }
+
+  .toolbar-background {
+    display: none;
+  }
+
+  ion-icon,
+  .back-button-text {
+    color: color($colors, white);
+  }
+}
+
+// list style
+.list-no-border {
+
+  .item:first-child {
+    border: none;
+  }
+  .item:last-child {
+    border: none;
+  }
+
+  .item.item-block {
+    .item-inner {
+      border: none;
+    }
+  }
+}
+
+.list-full-border {
+  @extend .list-no-border;
+
+  .item,
+  .item:first-child,
+  .item:last-child {
+    border-bottom: 1px solid color($colors, border-color);
+
+    .item-inner {
+      border: none;
+    }
+  }
+}
+
+// item style
+.item.item-block.no-border {
+
+  .item-inner {
+    border: none;
+  }
+}
+
+// common classes
+.middle-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+// fix slides style
+ion-slides {
+  .swiper-pagination.hide {
+    display: block !important;
+  }
+}
+
+.card.round {
+  overflow: hidden;
+}
+/* END CHAT STYLES */

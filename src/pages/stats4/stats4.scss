@@ -1,0 +1,31 @@
+page-stats4 {
+
+.bg-stat-1 {
+ background: linear-gradient(135deg, #0090ff 0%,#a800fc 100%) !important; 
+ color: #fff;
+	
+	h1 {
+	font-family: 'lato-light-webfont';
+	letter-spacing: 0.05rem;
+	font-size: 3.7rem;
+	margin-bottom: 3rem;
+	}
+	
+	h2 {
+	font-family: 'lato-light-webfont';
+	letter-spacing: 0.05rem;
+	font-size: 3.5rem;
+	}
+	
+	h5 {
+	font-family: 'lato-bold-webfont';
+	letter-spacing: 0.05rem;
+	font-size: 1.7rem;
+	}
+}
+
+svg {
+ background:none !important;
+}
+
+}

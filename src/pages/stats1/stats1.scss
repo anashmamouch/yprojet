@@ -1,0 +1,32 @@
+page-stats1 {
+
+	
+.toolbar-background-ios {
+ background: transparent;
+ border-bottom: none;
+}	
+	
+.bg-stat-1 {
+ background: linear-gradient(135deg, #0090ff 0%,#a800fc 100%) !important; 
+ color: #fff;
+	
+	h1 {
+	font-family: 'lato-light-webfont';
+	letter-spacing: 0.1rem;
+	font-size: 3rem;
+	margin-top: 2rem;
+	}
+	
+	h5 {
+	font-family: 'lato-regular-webfont';
+	letter-spacing: 0.05rem;
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+	}
+}
+
+svg {
+ background:none !important;
+}
+
+}

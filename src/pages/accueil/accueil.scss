@@ -1,0 +1,127 @@
+page-accueil {
+	
+	.toolbar-background-ios, .toolbar-background-md {
+	min-height: 60px !important;
+	background-color: #6600BA;
+	border-bottom: 1px solid #6300C6;
+	}
+	.list-ios .item-block .item-inner, .list-md .item-block .item-inner {
+	border-bottom: none;
+	padding: 0;
+	}
+	
+	
+	.accueil-background {
+	background: linear-gradient(to bottom, rgba(99,0,198,1) 30%,rgba(206,0,151,1) 74%,rgba(255,0,106,1) 99%);
+	}
+	
+	.stats-info {
+		span {
+		font-family: 'lato-light-webfont';
+		font-size: 2.5rem;
+		text-transform: none;
+		letter-spacing: 0.1rem;
+		background: linear-gradient(to right, rgba(230,0,126,1) 0%,rgba(247,0,247,1) 100%);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+		}
+		p {
+		font-family: 'lato-bold-webfont';
+		font-size: 1.2rem !important;
+		color: #fff;
+		}
+	}
+	.bundle-info {
+	background: transparent;
+	border-bottom: none !important;
+		h5 {
+		font-family: 'lato-regular-webfont';
+		font-size: 1.3rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1rem;
+		}
+		p {
+		font-family: 'lato-bold-webfont';
+		font-size: 1.4rem;
+		text-transform: none;
+		}
+	}
+	h4 {
+	font-family: 'lato-regular-webfont';
+	font-size: 1.6rem;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	}
+	
+	
+	.dashboard-card {
+	background: linear-gradient(to bottom, rgba(152,0,255,1) 0%,rgba(99,0,198,1) 100%);
+		
+		img {
+		width: 100%;
+		}
+
+		.card-title {
+		color: #fff;
+		font-family: 'lato-bold-webfont';
+		font-size: 1.3em;
+		letter-spacing: 0.05rem;
+		}
+		p {
+		color: #fff;
+		font-family: 'lato-regular-webfont';
+		font-size: 1.2em;
+		letter-spacing: 0.05rem;	
+		}
+		button {
+		font-family: 'lato-bold-webfont';
+		font-size: 1.1em;	
+		}
+		
+	}
+	
+	.card-background-page {
+		
+	  .item-block .item-inner {
+	  border-bottom: none;
+	  padding: 0;
+	  }
+	  
+	  .label-ios, label-md {
+	  margin: 0;
+	  }
+		
+	  ion-item {
+	  background: transparent;
+	  }
+
+	  ion-card {
+		position: relative;
+		text-align: center;
+		box-shadow: none;
+		border-radius: 5px;
+	  }
+
+	  .card-title {
+		position: absolute;
+		top: 40%;
+		font-family: 'lato-bold-webfont';
+		font-size: 1.8em;
+		letter-spacing: 0.05rem;
+		width: 100%;
+		color: #fff;
+	  }
+
+	  .card-subtitle {
+		font-size: 1.4em;
+		position: absolute;
+		top: 70%;
+		width: 100%;
+		color: #fff;
+	  }
+
+	}
+	
+}

@@ -1,0 +1,56 @@
+<!--
+  Generated template for the Packs page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+
+    <ion-title>Mes Bundles</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg-packs">
+
+  <!--begin segments-->
+  <ion-segment [(ngModel)] = "segment">
+    <ion-segment-button value="packs">
+      Mes Bundles
+    </ion-segment-button>
+    <ion-segment-button value="historiquepacks">
+      Historique
+    </ion-segment-button>
+  </ion-segment>
+  <!--end segment-->
+
+<div [ngSwitch]="segment">
+  <ion-list  *ngSwitchCase="'packs'" class="margin-top">
+    <ion-item *ngFor="let pack of packs; let i = index">
+      <h6>{{pack.nom}} à {{pack.prix}} €/mois</h6>
+	  <p>{{pack.date_debut_abonnement}}</p>
+
+      <ion-icon *ngIf = "pack.upgrade" color="secondary" item-right name="md-arrow-dropup"></ion-icon>
+      <ion-icon *ngIf = "pack.downgrade" color="danger" item-right name="md-arrow-dropdown"></ion-icon>
+
+      <!--Statut : {{pack.active}}-->
+    </ion-item>
+  </ion-list>
+
+  <ion-list  *ngSwitchCase="'historiquepacks'" class="margin-top">
+    <ion-item *ngFor="let pack of historiquepacks; let i = index">
+	  <h5>{{pack.nom}}</h5>
+      <p>Du {{pack.date_debut_abonnement}} Au {{pack.date_fin_abonnement}}</p>
+      <h6>Montant facture : {{pack.facture}} €</h6>
+      <!--Statut: {{pack.upgrade}}-->
+	 <ion-icon color="yers" name="ios-cloud-download-outline" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</div>
+</ion-content>

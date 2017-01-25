@@ -1,0 +1,29 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content padding text-center class="home-background" [ngStyle]="{ 'background-image': 'url(' + backgroundImage + ')' } " >
+
+ <img class="logo-home" src="../../assets/images/logo_home.png">
+
+  <div [formGroup]="loginForm">
+    <ion-list class="login-list">
+
+         <!--Username Login-->
+         <ion-item class="login-item bold">
+            <ion-input text-center type="text" formControlName = "username" [(ngModel)]="user.username" name="username" placeholder = "Email"></ion-input>
+         </ion-item>
+
+         <!--Password Login-->
+         <ion-item class="login-item bold">
+            <ion-input text-center type = "password" formControlName = "password" [(ngModel)]="user.password" name="password" placeholder = "Mot de passe"></ion-input>
+         </ion-item>
+
+     </ion-list>
+   </div>
+  <button (click) = "login()" ion-button [disabled]="!loginForm.valid" block outline round color="fresh" class="login-button">Login</button>
+  <button (click) = "forgotPassword()" ion-button color="light"  clear class="link-button">Mot de passe oublié ?</button>
+	<button (click) = "facebookConnect()" ion-button round block color="primary" margin-top>S'inscrire avec Facebook</button>
+	<button (click) = "register()" ion-button color="light" clear class="link-button">Vous n'avez pas de compte Facebook</button>
+
+</ion-content>

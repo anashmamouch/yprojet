@@ -1,0 +1,10 @@
+{
+  "globalDependencies": {
+    "amcharts": "registry:dt/amcharts#0.0.0+20160909114300",
+    "fusioncharts": "registry:dt/fusioncharts#3.11.2+20161025183635",
+    "google.maps": "registry:dt/google.maps#3.25.0+20161019131407"
+  },
+  "dependencies": {
+    "d3": "registry:npm/d3#3.0.0+20160723033700"
+  }
+}

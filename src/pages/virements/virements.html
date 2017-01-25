@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mon RIB</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+<div [formGroup]="virementForm">
+  <ion-list>
+
+	<ion-list-header>
+    Vos coordonnées bancaires
+  	</ion-list-header>
+
+    <!--Nom du virement-->
+    <ion-item>
+      <ion-label fixed>Nom et Prénom</ion-label>
+	  <ion-input type="text" placeholder = "{{virement.nom}}"></ion-input>
+
+    </ion-item>
+
+    <!--Code Banque-->
+    <ion-item>
+      <ion-label fixed>Code Banque</ion-label>
+      <ion-input type="text" formControlName="codeBanque" [(ngModel)]="virement.codeBanque" name="codeBanque" placeholder = "30003"></ion-input>
+    </ion-item>
+
+    <!--Code Guichet-->
+    <ion-item>
+      <ion-label fixed>Code Guichet</ion-label>
+      <ion-input type="text" formControlName="codeGuichet" [(ngModel)]="virement.codeGuichet" name="codeGuichet" placeholder = "00100"></ion-input>
+    </ion-item>
+
+    <!--Num Compte-->
+    <ion-item>
+      <ion-label fixed>N° compte</ion-label>
+      <ion-input type="text" formControlName="numCompte" [(ngModel)]="virement.numCompte" name="numCompte" placeholder = "00050863344"></ion-input>
+    </ion-item>
+
+    <!--Clé RIB-->
+    <ion-item>
+      <ion-label fixed>Clé RIB</ion-label>
+      <ion-input type="text" formControlName = "cleRib" [(ngModel)]="virement.cleRib" name="cleRib" placeholder = "10"></ion-input>
+    </ion-item>
+
+    <!--IBAN-->
+    <ion-item>
+      <ion-label fixed>IBAN</ion-label>
+      <ion-input type="text" formControlName="iban" [(ngModel)]="virement.iban" name="iban" placeholder = "FR43 4444 3333 3333 3333 222"></ion-input>
+    </ion-item>
+
+    <!--BIC-SWIFT-->
+    <ion-item>
+      <ion-label fixed>BIC-SWIFT</ion-label>
+      <ion-input type="text" formControlName="bicswift" [(ngModel)]="virement.bicswift" name="bicswift" placeholder = "SOGEFRPP"></ion-input>
+    </ion-item>
+
+  </ion-list>
+</div>
+<div padding>
+<button (click)= "confirmerVirement()" [disabled]="!virementForm.valid" ion-button block round class="action-button">Sauvegarder</button>
+</div>
+
+</ion-content>

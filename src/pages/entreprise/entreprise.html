@@ -1,0 +1,64 @@
+<!--
+  Generated template for the Entreprise page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mon entreprise</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<div [formGroup] = "entrepriseForm">
+
+  <ion-list>
+
+	<ion-list-header>
+    Informations sur votre entreprise
+  	</ion-list-header>
+
+     <!--Type Entreprise-->
+     <ion-item>
+      <ion-label>Type d'entreprise</ion-label>
+      <ion-select  [(ngModel)]="entreprise.type" [ngModelOptions]="{standalone: true}">
+      <ion-option value="micro">Micro-entreprise</ion-option>
+      <ion-option value="eirl">EIRL</ion-option>
+      <ion-option value="sarl">SARL</ion-option>
+      <ion-option value="sasu">SASU</ion-option>
+      <ion-option value="sas">SAS</ion-option>
+      <ion-option value="sa">SA</ion-option>
+      <ion-option value="autre">Autre</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <!--Nom Entreprise-->
+    <ion-item>
+      <ion-label fixed>Dénomination</ion-label>
+      <ion-input type="text" formControlName="nom" [(ngModel)]="entreprise.nom" name="nom" placeholder = "Microsoft"></ion-input>
+    </ion-item>
+
+    <!--Numero Siret-->
+    <ion-item>
+      <ion-label fixed>N° SIRET</ion-label>
+      <ion-input type="text" formControlName="numSiret" [(ngModel)]="entreprise.numSiret" name="numSiret" placeholder = "43343355500030"></ion-input>
+    </ion-item>
+
+    <!--Numero TVA-->
+    <ion-item>
+      <ion-label fixed>N° TVA intra</ion-label>
+      <ion-input type="text" formControlName="numTVA" [(ngModel)]="entreprise.numTVA" name="numTVA" placeholder = "FR76443332455"></ion-input>
+    </ion-item>
+
+  </ion-list>
+</div>
+
+  <div padding>
+    <button (click)= "modifierEntreprise()" [disabled]="!entrepriseForm.valid" text-center block ion-button round class="action-button">Sauvegarder</button>
+  </div>
+
+</ion-content>

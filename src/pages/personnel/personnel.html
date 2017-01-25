@@ -1,0 +1,127 @@
+<!--
+  Generated template for the Personnel page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mon profil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background-grey">
+
+<!--begin segments-->
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="profile" (ionSelect)="selectProfile()">
+      Mon Profil
+    </ion-segment-button>
+    <ion-segment-button value="equipe" (ionSelect)="selectEquipe()">
+      Mon équipe
+    </ion-segment-button>
+    <ion-segment-button value="sponsor" (ionSelect)="selectParrain()">
+      Mon sponsor
+    </ion-segment-button>
+  </ion-segment>
+<!--end segment-->
+
+<!--begin form-->
+<div [formGroup] = "personnelForm">
+
+  <ion-list>
+
+  <!--image profile-->
+  <ion-item class="background-grey no-padding" margin-top>
+    <div margin-top class="center image-profil" [style.background-image]= "trustUrlImage">
+      <button (click)="modifierImage()" class="icon-camera" ion-button icon-only>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </div>
+  </ion-item>
+
+
+  <div>
+    <ion-list-header>
+    Vos informations personnelles
+  	</ion-list-header>
+
+      <!--Nom et prenom
+    <ion-item>
+      <ion-label stacked>Prénom & nom</ion-label>
+      <ion-label>{{user.nom}}</ion-label>
+
+    </ion-item> -->
+
+    <!--Telephone-->
+      <ion-item>
+        <ion-label fixed>Téléphone</ion-label>
+        <ion-input type="text" formControlName="telephone" [(ngModel)]="user.telephone" name="telephone" placeholder = "01 43 35 54 32"></ion-input>
+      </ion-item>
+
+      <!--Email-->
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input type="email" formControlName="email" [(ngModel)]="user.email" name="email" placeholder = "charles.dupont@email.fr"></ion-input>
+      </ion-item>
+
+      <!--Adresse-->
+      <ion-item>
+        <ion-label fixed>Adresse</ion-label>
+        <ion-input type="text" formControlName="adresse" [(ngModel)]="user.adresse" name="adresse" placeholder = "4, rue du vieux pont"></ion-input>
+      </ion-item>
+
+      <!--Code Postal-->
+      <ion-item>
+        <ion-label fixed>Code Postal</ion-label>
+        <ion-input type="text" formControlName="codePostal" [(ngModel)]="user.codePostal" name="codePostal" placeholder = "75007"></ion-input>
+      </ion-item>
+
+      <!--Ville-->
+      <ion-item>
+        <ion-label fixed>Ville</ion-label>
+        <ion-input type="text" formControlName="ville" [(ngModel)]="user.ville" name="ville" placeholder = "Paris"></ion-input>
+      </ion-item>
+
+      <!--Pays-->
+      <ion-item>
+        <ion-label fixed>Pays</ion-label>
+        <ion-input type="text" formControlName="pays" [(ngModel)]="user.pays" name="pays" placeholder = "France"></ion-input>
+      </ion-item>
+
+      <!--ID Securite Social-->
+      <ion-item>
+        <ion-label fixed>N° sécurité sociale</ion-label>
+        <ion-input type="text" [disabled]="true"  formControlName="numSecuriteSocial" [(ngModel)]="user.numSecuriteSocial" name="numSecuriteSocial" placeholder = "100435532424"></ion-input>
+      </ion-item>
+
+     </div>
+     <!--end form-->
+
+
+     <ion-item class="no-padding no-border margin-top">
+      <div class="custom-nav" >
+          <button ion-item (click)="openEntreprise()">Mon entreprise</button>
+      </div>
+     </ion-item>
+
+     <ion-item class="no-padding no-border margin-top">
+        <div class="custom-nav">
+          <button ion-item (click)="openVirement()">Mes virements</button>
+      </div>
+     </ion-item>
+
+
+  </ion-list>
+</div>
+
+<button (click)= "modifier()" [disabled]="!personnelForm.valid" ion-button full>Confirmer les changements</button>
+	
+<button (click)= "logout()" ion-button clear color="danger" block margin-top>Déconnexion</button>
+
+
+</ion-content>

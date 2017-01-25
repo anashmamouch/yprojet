@@ -1,0 +1,99 @@
+<!--
+  Generated template for the Inscription page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Parrainer</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg-parrainer">
+<div [formGroup] = "parrainerForm">
+  <ion-list class="bg-list-parrainer">
+    <!--Timer-->
+
+	<ion-list-header class="parrainer-header">
+    <div class="timer bold" text-center *ngIf="timeInSeconds && timeInSeconds > 0">
+            <!--Il vous reste : {{daysString}} jours  {{hoursString}} heures {{minutesString}} min {{secondsString}} sec <br>-->
+			<span [innerHTML] = "timer.displayTime"></span>
+			<span><ion-icon name="ios-information-circle-outline"></ion-icon></span>
+			<br/>
+            <span *ngIf="!timer.runTimer && (timer.hasStarted || timer.hasFinished) || timer.hasFinished">
+            C'est terminée
+            </span>
+      </div>
+  	</ion-list-header>
+
+
+    <!--Titre-->
+    <ion-item>
+        <ion-label >Civilité</ion-label>
+          <ion-select formControlName="gender" [(ngModel)]="user.gender" name="gender" >
+            <ion-option value="f" selected="true">Madame</ion-option>
+            <ion-option value="m">Monsieur</ion-option>
+        </ion-select>
+      </ion-item>
+
+    <!--Nom-->
+    <ion-item>
+      <ion-label fixed>Nom</ion-label>
+      <ion-input type="text" formControlName="nom" [(ngModel)]="user.nom" name="nom"></ion-input>
+    </ion-item>
+
+    <!--Prenom-->
+    <ion-item>
+      <ion-label fixed>Prénom</ion-label>
+      <ion-input type="text" formControlName="prenom" [(ngModel)]="user.prenom" name="prenom"></ion-input>
+    </ion-item>
+
+    <!--Telephone-->
+      <ion-item>
+        <ion-label fixed>Téléphone</ion-label>
+        <ion-input type="text" formControlName = "telephone" [(ngModel)]="user.telephone" name="telephone"></ion-input>
+      </ion-item>
+
+      <!--Email-->
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input type="email" formControlName="email" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+
+      <!--Confirmer Email-->
+      <ion-item>
+        <ion-label fixed>Confirmer email</ion-label>
+        <ion-input type="email" formControlName="confirmEmail" [(ngModel)]="user.confirmEmail" name="confirmEmail"></ion-input>
+      </ion-item>
+
+      <!--Code Postal-->
+      <ion-item>
+        <ion-label fixed>Code Postal</ion-label>
+        <ion-input type="text" formControlName="codePostal" [(ngModel)]="user.codePostal" name="codePostal"></ion-input>
+      </ion-item>
+
+      <!--Ville-->
+      <ion-item>
+        <ion-label fixed>Ville</ion-label>
+        <ion-input type="text" formControlName="ville" [(ngModel)]="user.ville" name="ville"></ion-input>
+      </ion-item>
+
+      <!--Date de naissance-->
+      <ion-item>
+        <ion-label fixed>Date de naissance</ion-label>
+        <ion-datetime cancelText="Annuler" doneText="Confirmer" formControlName="dateNaissance" displayFormat="MM/DD/YYYY" [(ngModel)]="user.dateNaissance" name="dateNaissance"></ion-datetime>
+      </ion-item>
+    </ion-list>
+   </div>
+
+   <div padding>
+   <button (click)= "parrainer()" [disabled]="!parrainerForm.valid" ion-button block round class="action-button">Parrainer</button>
+   </div>
+
+</ion-content>

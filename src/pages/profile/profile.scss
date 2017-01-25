@@ -1,0 +1,54 @@
+page-profile{
+	
+.accueil-background {
+ background: linear-gradient(to bottom, rgba(25,0,255,1) 0%,rgba(123,0,255,1) 100%);
+}
+
+$toolbar-background: #fff;
+ 
+.image-profil {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  position: relative;
+  margin-bottom: 20px;
+}
+	
+	.statut {
+	 padding: 10px;
+	 min-height: 25px;
+	 background-image: url(../../assets/images/quote.png);
+	 background-repeat: no-repeat;
+	 background-size: contain;
+     background-position: center;
+	 background-color: rgba(255,255,255,0.1) !important;
+		
+		h6 {
+		 font-family:'lato-regular-webfont';
+	 	 font-size: 1.6rem !important; 
+	 	 color: #fff;
+	 	 letter-spacing: 0.05rem;
+		 text-transform: none;
+		}
+
+	}
+	
+	h3 {
+	 font-family:'lato-light-webfont';
+	 font-size: 2.3rem; 
+	 color: #fff;
+	 letter-spacing: 0.05rem;	
+	}
+	
+	h6 {
+	 font-family:'lato-bold-webfont';
+	 font-size: 1.1rem; 
+	 color: #fff;
+	 letter-spacing: 0.05rem;
+	 text-transform: uppercase;
+	}
+
+   
+}

@@ -1,0 +1,88 @@
+
+<ion-header>
+
+	<ion-navbar>
+	  <ion-buttons start>
+	  <button ion-button menuToggle color="yers">
+      <ion-icon name="menu"></ion-icon>
+      </button>
+	  </ion-buttons>
+	 <ion-buttons end>
+	  <button ion-button (click)="goToPersonnel()" color="yers">
+      <ion-icon name="contact"></ion-icon>
+      </button>
+	  </ion-buttons>
+	  <ion-title>Dashboard</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content class="accueil-background">
+
+	<ion-list>
+
+		<ion-grid margin-top>
+			<ion-row class="stats-info">
+				<ion-col width-33 text-center tappable (click)="goToFilleuls()">
+					<p><span #counter></span></p>
+					<p>Filleuls équipe</p>
+				</ion-col>
+				<ion-col width-33 text-center tappable (click)="goToRemEnCours()">
+					<p><span #counter1></span><span>€</span></p>
+					<p>À encaisser</p>
+				</ion-col>
+				<ion-col width-33 text-center tappable (click)="goToRemMois()">
+					<p><span #counter1></span><span>€</span></p>
+					<p>Dernier paiement</p>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<h4 color="fresh" text-center>Mon Bundle actif</h4>
+
+		<ion-card class="dashboard-card">
+		  <img [src] = "imagePack" >
+		  <ion-card-content>
+			<ion-card-title>
+			  {{nomPack}} | {{prixPack}}
+			  </ion-card-title>
+			<p>
+			 Vous avez {{dateAbonnement}}.
+			</p>
+		  </ion-card-content>
+
+		 <ion-row>
+			<ion-col text-center>
+			  <button ion-button icon-left clear small (click)="goToBundles()" color="secondary">
+				<ion-icon name="trending-up"></ion-icon>
+				<div>Upgrader</div>
+			  </button>
+			</ion-col>
+			<ion-col text-center>
+			  <button ion-button icon-right clear small (click)="goToPacks()" color="yers">
+				<div>Détails</div>
+				<ion-icon name="arrow-forward"></ion-icon>
+			  </button>
+			</ion-col>
+		  </ion-row>
+		</ion-card>
+
+		<h4 color="fresh" text-center>Mes avantages</h4>
+
+		<div class="card-background-page">
+
+			<ion-item *ngFor = "let avantage of avantages; let i = index">
+				<ion-card>
+					<img [src] = "images[i]" />
+					<div class="card-title">{{avantage.avantage_display}}</div>
+
+					<div class="card-subtitle">-{{avantage.avantage_percent}}%</div>
+				</ion-card>
+			</ion-item>
+
+		</div>
+
+
+	</ion-list>
+
+</ion-content>

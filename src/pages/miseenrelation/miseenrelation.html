@@ -1,0 +1,98 @@
+<ion-header>
+
+   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mise en relation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div>
+    <ion-list>
+      <!--Code Postal - Ville-->
+      <ion-item>
+        <ion-label stacked>Code Postal / Ville</ion-label>
+        <ion-input type="text" [(ngModel)]="relationData.codePostal" name="codePostal"></ion-input>
+      </ion-item>
+
+      <!--Trouvez la ville button-->
+
+      <button ion-button (click)="trouvezVille($event)" block>Trouvez la ville</button>
+
+      <!--Ville-->
+      <ion-item>
+          <ion-label>Ville</ion-label>
+            <ion-select [(ngModel)]="relationData.ville" name="ville" (ionChange)="onChangeVille($event)" >
+                <ion-option *ngFor="let item of villeList" [value]="item.value">{{item.text}}</ion-option>
+
+          </ion-select>
+        </ion-item>
+
+       <!--Type-->
+        <ion-item>
+            <ion-label>Type</ion-label>
+              <ion-select [(ngModel)]="relationData.type" name="type" (ionChange)="onTypeSelected($event)" >
+                   <ion-option *ngFor="let item of typeList" [value]="item.value">{{item.text}}</ion-option>
+
+            </ion-select>
+          </ion-item>
+
+        <!--Partenaire-->
+        <ion-item>
+          <ion-label>Partenaire</ion-label>
+              <ion-select [(ngModel)]="relationData.partenaire" name="partenaire" [disabled]="!partenaireList.length">
+                 <ion-option *ngFor="let item of partenaireList" [value]="item" >{{item}}</ion-option>
+
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+          Votre contact que nous allons contacter
+        </ion-item>
+
+        <!--Nom de votre contact-->
+        <ion-item>
+          <ion-label stacked>Nom de votre contact</ion-label>
+          <ion-input type="text" [(ngModel)]="relationData.nomContact" name="nomContact" ></ion-input>
+        </ion-item>
+
+        <!--Prenom de votre contact-->
+        <ion-item>
+          <ion-label stacked>Prénom du contact</ion-label>
+          <ion-input type="text" [(ngModel)]="relationData.prenomContact" name="prenomContact" ></ion-input>
+        </ion-item>
+
+        <!--Email de votre contact-->
+        <ion-item>
+          <ion-label stacked>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="relationData.email" name="email"></ion-input>
+        </ion-item>
+
+        <!--Adresse de votre contact-->
+        <ion-item>
+          <ion-label stacked>Adresse</ion-label>
+          <ion-input type="text" [(ngModel)]="relationData.adresse" name="adresse"></ion-input>
+        </ion-item>
+
+        <!--Mobile de votre contact-->
+        <ion-item>
+          <ion-label stacked>Mobile</ion-label>
+          <ion-input type="mobile" [(ngModel)]="relationData.mobile" name="mobile"></ion-input>
+        </ion-item>
+
+        <!--Commentaire-->
+        <ion-item>
+           <ion-textarea [(ngModel)]="relationData.commentaire" name="commentaire" placeholder="Redigez un commentaire"></ion-textarea>
+        </ion-item>
+
+        <!--Mettre en relation-->
+        <button ion-button (click)="mettreEnRelation()" block>Mettre en relation</button>
+
+    </ion-list>
+  </div>
+
+</ion-content>

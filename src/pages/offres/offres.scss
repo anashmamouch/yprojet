@@ -1,0 +1,70 @@
+page-offres {
+
+	.offre-background {
+	background: #333;
+	}
+	
+	.card-background-page {
+		
+	  .item-block .item-inner {
+	  border-bottom: none;
+	  padding: 0;
+	  }
+	  
+	  .label-ios {
+	  margin: 0;
+	  }
+		
+	  ion-item {
+	  background: transparent !important;
+	  }
+
+	  ion-card {
+		position: relative;
+		text-align: center;
+		box-shadow: 0px 14px 15px -10px rgba(0,0,0,0.61);
+		border-radius: 10px;
+		height: 40vh;
+	  }
+
+
+	  .card-title {
+		position: absolute;
+		top: 40%;
+		font-size: 1.5em;
+		width: 100%;
+		font-weight: bold;
+		letter-spacing: 0.2rem;
+		font-family:'lato-bold-webfont';
+		color: #fff;
+	  }
+
+	  .card-subtitle {
+		font-size: 1.4em;
+		position: absolute;
+		top: 55%;
+		width: 100%;
+		color: #fff;
+	  }
+		
+		.card-describe {
+			font-size: 1.2em;
+			position: absolute;
+			top: 40%;
+			width: 100%;
+			color: #fff;
+			font-family: 'lato-regular-webfont';
+			text-transform: none;
+		  }
+
+		 .card-action {
+			font-size: 1.4em;
+			position: absolute;
+			top: 70%;
+			width: 100%;
+			color: #fff;
+	    }
+
+}
+	
+}

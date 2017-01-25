@@ -1,0 +1,89 @@
+page-bundles {
+	
+	.bundle-background {
+	background: linear-gradient(to bottom, rgba(24,28,154,1) 0%,rgba(204,43,158,1) 100%);
+	}
+	.list-ios .item-block .item-inner {
+	border-bottom: none;
+	padding: 0;
+	}
+	.list-ios > .item-block:last-child, {
+	border-bottom: none;	
+	}
+	
+	.card-background-page {
+		
+	  .item-block .item-inner {
+	  border-bottom: none;
+	  padding: 0;
+	  }
+	  
+	  .label-ios {
+	  margin: 0;
+	  }
+		
+	  ion-item {
+	  background: transparent !important;
+	  }
+
+	  ion-card {
+		position: relative;
+		text-align: center;
+		box-shadow: 0px 14px 15px -10px rgba(0,0,0,0.61);
+		border-radius: 10px;
+		border-style: solid;
+		border-width: 5px; 
+		border-color: #32db64;
+	  }
+
+	  .card-title {
+		position: absolute;
+		top: 15%;
+		font-size: 1.8em;
+		width: 100%;
+		font-weight: bold;
+		color: #fff;
+	  }
+
+	  .card-subtitle {
+		font-size: 1.4em;
+		position: absolute;
+		top: 20%;
+		width: 100%;
+		color: #fff;
+	  }
+		
+	   .card-info {
+		font-size: 1.1em;
+		position: absolute;
+		top: 35%;
+		width: 100%;
+		color: #fff;
+		text-transform: none;
+	    }
+
+	   .card-price {
+		font-size: 1.6em;
+		position: absolute;
+		top: 70%;
+		width: 100%;
+		color: #fff;
+		font-weight: bold;
+	   }
+
+	   .card-action {
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(17,6,6,0.26) 44%,rgba(0,0,0,0.6) 100%);
+		font-size: 1.3em;
+		position: absolute;
+		top: 70%;
+		width: 100%;
+		color: #fff;
+	    }
+
+	 }
+
+	  
+
+}
+
+

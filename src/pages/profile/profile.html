@@ -1,0 +1,57 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+	<ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="accueil-background">
+
+<ion-profile-header [options]="options"></ion-profile-header>
+
+<div class="statut">
+<h6 text-center>Ma devise : je n'ai pas de plan B.</h6>
+</div>
+	
+<ion-grid>
+  <ion-row>
+    <ion-col offset-25 width-25 text-center>
+    <button ion-button icon-only round outline><ion-icon name="ios-call-outline"></ion-icon></button>
+	</ion-col>
+	<ion-col width-25 text-center>
+    <button ion-button icon-only round outline><ion-icon name="ios-chatbubbles-outline"></ion-icon></button>
+	</ion-col>
+  </ion-row>
+</ion-grid>
+	
+<ion-grid>
+  <ion-row>
+    <ion-col width-33 text-center>
+    <h6>Bundle<br/>actuel</h6>
+	</ion-col>
+	<ion-col width-33 text-center>
+    <h6>Cagnotte<br/>active</h6>
+	<h3>1 250€</h3>
+	</ion-col>
+	<ion-col width-33 text-center>
+    <h6>Puissance<br/>profil</h6>
+	<h3>60%</h3>
+	</ion-col>
+  </ion-row>
+</ion-grid>
+	
+	
+<!--email: {{email}}
+date de naissance: {{dateNaissance}}-->
+
+</ion-content>

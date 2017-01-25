@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/8def457e061a90162dd857d3b23cebc3417f8ff8/fusioncharts/fusioncharts.d.ts",
+    "raw": "registry:dt/fusioncharts#3.11.2+20161025183635",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/8def457e061a90162dd857d3b23cebc3417f8ff8/fusioncharts/fusioncharts.d.ts"
+  }
+}
