@@ -23,7 +23,7 @@
       <ion-item>
         <ion-label>Département</ion-label>
         <ion-select [(ngModel)]="departement" name="departement" (ionChange)="calculFraisNotaire()" okText="Confirmer" cancelText="Annuler">
-          <ion-option [value]="dep.taux_vote" *ngFor="let dep of departements"> {{dep.nom_departement}}</ion-option>
+          <ion-option [value]="dep.taux_vote" *ngFor="let dep of departements" selected="false"> {{dep.nom_departement}}</ion-option>
         </ion-select>
       </ion-item>
 
