@@ -1,21 +1,196 @@
-<ion-header>
-
-  <ion-navbar>
+<ion-header> 
+    <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Mes Recommandations</ion-title>
-  </ion-navbar>
-
+        <ion-title>Mes Recommandations</ion-title> 
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-<ion-list>
-  <ion-item *ngFor="let rec of recommandations">
-      {{rec.nom}}<br/>
-      {{rec.categorie}}<br/>
-      {{rec.ville}}
-  </ion-item>
-</ion-list>
+<div *ngIf= 'page == 1'>
+
+    <ion-list> 
+        <ion-item *ngIf= 'nombre_reco_total == 0'>
+            <h4>Aucune recommandation</h4>
+            <h4>A traiter</h4>
+        </ion-item> 
+        <ion-item *ngFor="let rec of recommandations"> 
+                {{rec.nom}}<br />
+                {{rec.categorie}}<br />
+                {{rec.ville}}<br />
+                <button ion-button (click)="traitementRecommandation(rec.id_recommandation)">MAJ</button>
+        </ion-item> 
+    </ion-list> 
+</div>
+
+<div *ngIf= 'page == 2'>
+
+<form (ngSubmit)="majRecommandation(reco_a_traiter)">
+        {{reco_a_traiter.r_first_name}} {{reco_a_traiter.r_last_name}} <br/>
+        R{{reco_a_traiter.id_recommandation}}  | {{reco_a_traiter.r_category}} à  {{reco_a_traiter.ville_reco}}<br>
+        
+        Ou en êtes vous
+        <br>
+        <ion-item *ngIf="reco_a_traiter.r_status == 3 || reco_a_traiter.r_status == 4">
+            <ion-item *ngIf="reco_a_traiter.r_status == 3">
+                <ion-select id="etape_reco" name="etape_reco"  [(ngModel)]="reco_a_traiter.etape_reco" >
+                    <!--Etape 4-->
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'recrutement'" value="4" >4 - RDV planifié pour une présentation</ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier'" value="4" >4 - RDV planifié </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'travaux'" value="4" > 4 - RDV planifié</ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'autres'" value="4" >4 - RDV planifié </ion-option>
+                    <!--Etape 5-->
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'recrutement'" value="5" >5 - Présentation réalisée </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code == 4" value="5" >5 - Simulation réalisée</ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code != 4" value="5" >5 - Estimation réalisée </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'travaux'" value="5" >5 - Devis envoyé" </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'autres'" value="5">5 - Devis envoyé </ion-option>
+
+                    <!--  -->
+                    <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                    <ion-option  value="33" >Dossier en cours - J'ai laissé un message au client </ion-option>
+                    <ion-option  value="36" >Dossier en cours - Projet à réaliser dans le future </ion-option>
+                    <ion-option  value="35" >Dossier en cours  </ion-option>
+                    <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                    <ion-option  value="41" >Fermer ce dossier - Vendu par la concurrence </ion-option>
+                    <ion-option  value="0"  >Fermer ce dossier - Contact non intéressé par nos services / Déjà en contact </ion-option>
+
+                    <!-- Etape 3 -->
+                    <ion-option  value="40">Fermer ce dossier - Dites nous pourquoi en commentaire ?  </ion-option>
+                </ion-select>
+            </ion-item>
+            
+            <ion-item *ngIf="reco_a_traiter.r_status != 3">
+                               
+                <ion-select id="etape_reco" name="etape_reco"  [(ngModel)]="reco_a_traiter.etape_reco" >
+                    <!--Etape 5-->
+
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'recrutement'" value="5" >5 - Présentation réalisée </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code == 4" value="5" >5 - Simulation réalisée </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code != 4" value="5" >5 - Estimation réalisée </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'travaux'" value="5" >5 - Devis envoyé </ion-option>
+                    <ion-option *ngIf="reco_a_traiter.r_category == 'autres'" value="5" >5 - Devis envoyé </ion-option>
+
+                    <!--  -->
+                    <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                    <ion-option  value="33" >Dossier en cours - J'ai laissé un message au client </ion-option>
+                    <ion-option  value="36" >Dossier en cours - Projet à réaliser dans le future </ion-option>
+                    <ion-option  value="35" >Dossier en cours  </ion-option>
+                    <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                    <ion-option  value="41" >Fermer ce dossier - Vendu par la concurrence </ion-option>
+                    <ion-option  value="0" >Fermer ce dossier - Contact non intéressé par nos services / Déjà en contact </ion-option>
+                </ion-select>
+            </ion-item>
+    </ion-item>
+    <br>
+            
+                <ion-item *ngIf="reco_a_traiter.r_status == 5">
+                    <ion-select id="etape_reco" name="etape_reco" [(ngModel)]="reco_a_traiter.etape_reco" >
+                        <!--Etape6-->
+
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'recrutement'" value="6" >6 - Embauche - A relancer dans </ion-option>
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code == 4" value="6" >6 - Financement accepté </ion-option>
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code != 4" value="6">6 - Mandat signé </ion-option>
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'travaux'" value="6" >6 - Devis des travaux accepté </ion-option>
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'autres'" value="6">6 - Devis des travaux accepté </ion-option>
+
+                        <!--  -->
+                        <ion-option value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                        <ion-option value="33" >Dossier en cours - J'ai laissé un message au client </ion-option>
+                        <ion-option value="36" >Dossier en cours - Projet à réaliser dans le future </ion-option>
+                        <ion-option value="35" >Dossier en cours  </ion-option>
+                        <ion-option value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                        <ion-option value="41" >Fermer ce dossier - Vendu par la concurrence </ion-option>
+                        <ion-option value="0" >Fermer ce dossier - Contact non intéressé par nos services / Déjà en contact </ion-option>
+                    </ion-select>
+                </ion-item>
+    <br>
+                <ion-item *ngIf="reco_a_traiter.r_status == 6">
+                    <ion-select id="etape_reco" name="etape_reco" [(ngModel)]="reco_a_traiter.etape_reco" >
+
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'recrutement'" value="7" >7 - 1ière vente réalisée - En attente Facture NosRezo </ion-option>
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code == 4" value="7" >7 - Financement accepté par client </ion-option>
+                        <ion-option *ngIf="reco_a_traiter.r_category == 'immobilier' && reco_a_traiter.r_sub_category_code != 4" value="7" >7 - Compromis signé </ion-option>
+                        <ion-option *ngIf="reco_a_traiter.r_category != 'immobilier' && reco_a_traiter.r_category != 'recrutement'" value="7" >7 - Vente réalisée - En attente Facture NosRezo </ion-option>
+
+                        <!--  -->
+                        <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                        <ion-option  value="33" >Dossier en cours - J'ai laissé un message au client </ion-option>
+                        <ion-option  value="36" >Dossier en cours - Projet à réaliser dans le future </ion-option>
+                        <ion-option  value="35" >Dossier en cours  </ion-option>
+                        <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                        <ion-option  value="41" >Fermer ce dossier - Vendu par la concurrence </ion-option>
+                        <ion-option  value="0" >Fermer ce dossier - Contact non intéressé par nos services / Déjà en contact </ion-option>
+                    </ion-select>
+                </ion-item>
+                    <br>
+                <ion-item>
+                        <ion-item *ngIf="reco_a_traiter.r_status == 7">
+                            <ion-select id="etape_reco" name="etape_reco" [(ngModel)]="reco_a_traiter.etape_reco">
+
+                                <ion-option  value="8" >8 - Paiement réalisé auprès de NosRezo </ion-option>
+                                <ion-option  value="35" >Dossier en cours</ion-option>
+                            </ion-select>
+                        </ion-item>
+                        </ion-item>
+                        <br>
+                        Date de relance souhaité
+                        <br>
+
+                        <div > 
+                        <ion-item>
+                        <ion-select id="delai_relance" name="delai_relance" [(ngModel)]="reco_a_traiter.delai_relance" >
+                            <ion-option value="3">3 jours</ion-option>
+                            <ion-option value="4">4 jours</ion-option>
+                            <ion-option value="5">5 jours</ion-option>
+                            <ion-option value="6">6 jours</ion-option>
+                            <ion-option value="7" selected>7 jours</ion-option>
+                            <ion-option value="8">8 jours</ion-option>
+                            <ion-option value="9">9 jours</ion-option>
+                            <ion-option value="10">10 jours</ion-option>
+                            <ion-option value="11">11 jours</ion-option>
+                            <ion-option value="12">12 jours</ion-option>
+                            <ion-option value="13">13 jours</ion-option>
+                            <ion-option value="14">14 jours</ion-option>
+                            <ion-option value="15">15 jours</ion-option>
+                            <ion-option value="30">1 mois</ion-option>
+                            <ion-option value="60">2 mois</ion-option>
+                            <ion-option value="90">3 mois</ion-option>
+                            <ion-option value="180">6 mois</ion-option>
+                            <ion-option value="360">12 mois</ion-option>
+                        </ion-select>
+                        </ion-item>
+                        <br>              
+                        
+                        <ion-item *ngIf="reco_a_traiter.r_status >= 7 && (reco_a_traiter.r_sub_category_code == 1 || reco_a_traiter.r_sub_category_code == 50)">
+                        <label>
+                                <ion-item>Identifiant IAD</ion-item>
+                            <ion-input  type="text" id="id_iad_transaction" name="id_iad_transaction" [(ngModel)]="reco_a_traiter.id_iad_transaction"></ion-input>
+                        </label>
+                    </ion-item>  
+                            
+                            <br>     
+                            <label>
+                                   {{reco_a_traiter.montant_label}} 
+                                <ion-input   type="text" name="r_devis_ttc" id="r_devis_ttc" [(ngModel)]="reco_a_traiter.r_devis_ttc">
+                                </ion-input>
+                            </label>
+                            <br>
+                            
+                            <label>
+                            <ion-item >Commentaire</ion-item>
+                           
+                            <ion-textarea   name="description" [(ngModel)]="reco_a_traiter.description"></ion-textarea>
+                        </label>
+                        </div>
+
+            <br>
+            <button ion-button type="submit" block>Mettre à jour</button>
+                                                         
+</form>
+
+</div>
+
 </ion-content>

@@ -61,7 +61,7 @@ export class ParrainPage {
     this.idAffiliate = localStorage.getItem('id_affiliate');
     this.API = localStorage.getItem('api');
 
-    let URL: string = 'http://'+this.API+'/Y_PROJECT/scripts/api_mobile/api_infos_affiliate.php?term='+this.idAffiliate;
+    let URL: string = this.API + 'api_infos_affiliate.php?term='+this.idAffiliate;
 
     this.urlImage = '';
 
@@ -82,7 +82,7 @@ export class ParrainPage {
       this.parrain.dateNaissanceParrain = this.response.birth_date2;
       this.parrain.dateInscriptionParrain = this.dateInscriptionParrain.toISOString();
 
-      let URLParrain: string = 'http://'+this.API+'/Y_PROJECT/scripts/api_mobile/api_infos_affiliate.php?term='+this.parrain.idParrain;
+      let URLParrain: string = this.API + 'api_infos_affiliate.php?term='+this.parrain.idParrain;
 
       this.http.get(URLParrain).subscribe((data) => {
 
@@ -106,7 +106,7 @@ export class ParrainPage {
   }
 
   sendSMS(){
-    SMS.send(this.response.phone_number_p2, 'Y_PROJECT Salut!');
+    SMS.send(this.response.phone_number_p2, 'NOSREZO Salut!');
   }
 
   call(){

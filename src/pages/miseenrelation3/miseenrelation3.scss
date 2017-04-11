@@ -1,0 +1,65 @@
+page-miseenrelation3 {
+	
+	ion-content {
+	background: #FAFAFA !important;
+		
+		.title {
+		font-family: 'catamaran-bold-webfont';
+		letter-spacing: 0.1rem;
+		margin-top: 10rem;
+			
+			h3 {
+			font-size: 2.1rem;	
+			}
+		
+		}
+		
+		.input-localisation {
+		display: block;
+        margin: 0;
+        width: 100%;
+        font-family: 'catamaran-bold-webfont';
+        font-size: 1.8rem;
+		background: transparent;
+		border: none;
+		border-bottom: 3px solid #4f7abd;
+		color: #4f7abd;
+		height: 3em;
+		}
+	
+	}
+
+	 .form-horizontal .ng2-auto-complete ul {
+		background: transparent;
+		color: #4f7abd;
+        padding-top: 60px; 
+        list-style-type: none;
+        margin: 0;
+        outline: none;
+		font-family: 'catamaran-bold-webfont';
+        font-size: 1.8rem;
+        border-width:0px; 
+        border:none; 
+      }   
+
+      .form-horizontal .ng2-auto-complete li {
+		font-family: 'catamaran-bold-webfont';
+        font-size: 1.8rem;
+		color: #4f7abd;
+        text-decoration: none;
+		background: transparent;
+      }
+	  
+	  .ng2-auto-complete > ul li {
+	  padding: 5px;
+      }
+	  
+	  .ng2-auto-complete > ul li.selected {
+	  background-color: transparent;
+      }
+
+      .form-horizontal .ng2-auto-complete li:last-child {
+      border: none;
+      }
+
+}

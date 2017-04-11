@@ -10,19 +10,42 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>aperorezo</ion-title>
+    <ion-title><img alt="logo" height="40" src="../../assets/images/aperorezo.svg" ></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+ 
+  <div class="title">
+   <h3 color="nosrezo">Prochaines présentations NosRezo autour de chez vous</h3>
+  </div>
+	
   <ion-list>
-    <ion-item *ngFor = "let apero of aperosrezo">
-      {{ apero.planning_jour_semaine }} {{apero.jour_du_mois}} {{apero.planning_mois_de_annee}} {{apero.planning_heure}} <br/>
-      {{ apero.endroit }}<br/>
+	  
+    <ion-card *ngFor = "let apero of aperosrezo">
+	  <ion-item>
+	   <ion-avatar item-left>
+       <img [src]="image">
+       </ion-avatar>
+       <h2 color="fresh">{{ apero.endroit }}</h2>
+       <p color="fresh">{{ apero.planning_jour_semaine }} {{apero.jour_du_mois}} {{apero.planning_mois_de_annee}}</p>
+	  </ion-item>
+      <ion-card-content>
       {{ apero.adresse }}<br/>
-      Animé par: <strong>{{ apero.presentateur }}</strong>
-
-    </ion-item>
+	  {{ apero.endroit }}
+	  </ion-card-content>
+	  <ion-row>
+	   <ion-col text-left width-75>
+	   Animé par: <strong>{{ apero.presentateur }}</strong>
+	   </ion-col>  
+	   <ion-col text-right width-25>
+	   <ion-icon name="clock"></ion-icon>
+	   <strong>{{apero.planning_heure}}</strong>
+	   </ion-col>
+	  </ion-row>
+    </ion-card>
+	  
   </ion-list>
+	
 </ion-content>

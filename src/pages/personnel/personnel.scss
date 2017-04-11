@@ -1,54 +1,104 @@
 page-personnel {
 	
-.background-grey {
- background: #fafafa;
-}
-.image-profil {
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  width: 75px;
-  height: 75px;
-  position: relative;
-  margin-bottom: 20px;
-}
-.icon-camera {
-  position: absolute;
-  border-radius: 50%;
-  width: 75px !important;
-  height: 75px !important;
-  margin: 0 !important;
-  background-color: rgba(0, 0, 0, 0.40);
-}
-
-.custom-nav button {
- border-top: 0.55px solid #EDEDED !important;
- border-bottom: 0.55px solid #EDEDED !important;		
-}
+	ion-content {
+	background-color: #FAFAFA!important;
+	}
 	
-.segment {
- width: auto;
- border-bottom: 0.55px solid #EDEDED;
-}	
+	ion-list {
+	font-family: 'catamaran-medium-webfont';
+	font-size: 1.3rem;
 		
-.segment-ios .segment-button, .segment-md .segment-button {
- margin: 10px 0;
- border: none;
- height: 3.2rem;
- font-family: 'lato-bold-webfont';
- font-size: 1.2rem;
- line-height: 3.2rem;
- text-transform: uppercase;
- letter-spacing: 0.05rem;
- color: #EDEDED;
- background: transparent;
- border-radius: 0;
-}
+		.list-header-ios, .list-header-md {
+		font-size: 1.3rem;
+		background-color: transparent;
+		border-top: none;
+		margin-bottom: 0;
+		text-transform: uppercase;
+		}
+		
+		ion-icon {
+		margin-right: 5px;
+		font-size: 1.6rem;
+		color: #fff;
+		}
+	
+		ion-label {
+		color: #575757;	
+		}
+		
+		ion-label[fixed] {
+		max-width: 250px !important;
+		-webkit-flex: 0 0 120px;
+    	-ms-flex: 0 0 120px;
+    	flex: 0 0 120px;
+		}
+		
+		ion-select {
+		max-width: 100%;
+		}
+	
+		.select-ios .select-icon, .select-md .select-icon {
+		width: 100px;
+		left: 80px;
+		}
+		
+		.select-ios .select-icon .select-icon-inner, .select-md .select-icon .select-icon-inner {
+		left: 0px;	
+		}
+		
+		ion-input {
+		font-family: 'catamaran-medium-webfont';
+		}
+		
+		.item-datetime .label-ios {
+		max-width: 100px;
+		}
+		
+		.center {
+		margin: 10px auto;
+		position: relative;
+		}
+		
+		.list-ios > .item-block:first-child {
+		border-top: none !important;
+		border-bottom: none !important;
+		font-family: 'catamaran-bold-webfont';
+		font-size: 1.3rem;
+		}
+		
+		.image-profil {
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		border-radius: 50%;
+		width: 75px;
+		height: 75px;
+		position: relative;
+		margin-bottom: 20px;
+		}
+	
+		.icon-camera {
+		position: absolute;
+		border-radius: 50%;
+		width: 75px !important;
+		height: 75px !important;
+		margin: 0 !important;
+		background-color: rgba(0, 0, 0, 0.40);
+		}
+		
+	}
+	
+	.action-button {
+	font-family: 'catamaran-bold-webfont';
+	font-size: 1.3rem;
+	letter-spacing: 0.1rem;
+	height: 3em;
+	}
 
-.segment-ios .segment-button.segment-activated, .segment-md .segment-button.segment-activated  {
- color: #6600BA;
- background: transparent;
- border-radius: 0;
-}	
-
+	ion-footer {
+	background: linear-gradient(to bottom, rgba(86,216,0,1) 0%,rgba(0,209,59,1) 100%) !important;
+	font-family: 'catamaran-bold-webfont';
+	font-size: 1.5rem;	
+	letter-spacing: 0.1rem;
+	}
+	
 }

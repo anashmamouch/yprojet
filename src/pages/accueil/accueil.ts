@@ -9,192 +9,387 @@ import { Stats2Page } from '../stats2/stats2';
 import { Stats3Page } from '../stats3/stats3';
 import { PacksPage } from '../packs/packs';
 import { BundlesPage } from '../bundles/bundles';
+import { FilleulsPage } from '../filleuls/filleuls';
+import { Slides, Platform } from 'ionic-angular';
+
+import { Youtube } from '../../providers/youtube';
 
 import { Api } from '../../providers/api';
+
+import { IScrollTab, ScrollTabsComponent } from '../../components/scrolltabs';
+
+//pages
+import { SimulateurfinancementPage } from '../simulateurfinancement/simulateurfinancement'; 
+import { SimulateurnotairePage } from '../simulateurnotaire/simulateurnotaire';
+import { SimulateurgainsPage } from '../simulateurgains/simulateurgains'; 
+
+import 'rxjs/add/operator/map';
+
+import {YoutubeService} from '../../providers/youtube-service/youtube-service';
+
 
 @Component({
   selector: 'page-accueil',
   templateUrl: 'accueil.html',
+  providers:[YoutubeService]
 })
 
 export class AccueilPage {
 
-  demo:any =  {} ;
-  demo1:any;
-  demo2:any;
 
-  options:any = {
-      useEasing : true,
-      useGrouping : true,
-      separator : ' ',
-      decimal : '.',
-      prefix : '',
-      suffix : ''
+    //youtube variables
+    channelID: string = 'UC020AAJyyPtZwa2f4806J9A';
+    maxResults: string = '10';
+    pageToken: string; 
+    googleToken: string = 'AIzaSyD_jvCjEOtaghictkl1IR0NurzB13Yrb4I';
+    searchQuery: string = ' ';
+    posts: any = [];
+    onPlaying: boolean = false; 
+    //end youtube variables
+
+    //mes affiliés
+    totalAffiliesEquipe:any; 
+    affiliesNiv1:any;
+    affiliesNiv2:any;
+    affiliesNiv3:any;
+    affiliesNiv4:any;
+    affiliesNiv5:any;
+    affiliesNiv6:any;
+    //end mes affiliés
+
+    //mes recommandations
+    totalRecoEquipe:any; 
+    recosNiv0:any;
+    recosNiv1:any;
+    recosNiv2:any;
+    recosNiv3:any;
+    recosNiv4:any;
+    recosNiv5:any;
+    recosNiv6:any;
+    //end mes recommandations
+
+    //ma remunération
+    commissionEncaisser:any; 
+    remunerationPotentielle:any;
+    remNiv0:any; 
+    remNiv1:any;
+    remNiv2:any;
+    remNiv3:any;
+    remNiv4:any;
+    remNiv5:any;
+    remNiv6:any;
+    //end ma remunération
+    
+    //videos
+    channel = 'UC020AAJyyPtZwa2f4806J9A';
+    datas:any;
+    nextPageToken:any;
+    id:any;
+    //end videos
+
+   tabs: IScrollTab[] = [
+    {
+      name: 'Mes affiliés'
+    },
+    {
+      name: 'Mes recommandations'
+    },
+    {
+      name: 'Ma rémunération'
+    },
+    {
+      name: 'Mes outils'
+    },
+    {
+      name: 'Vidéos '
+    },
+  ];
+  selectedTab: IScrollTab;
+  @ViewChild('scrollTab') scrollTab: ScrollTabsComponent;
+
+  // @ViewChild('counter') counter:any;
+  // @ViewChild('counter1') counter1:any;
+  // @ViewChild('counter2') counter2:any;
+
+  @ViewChild('mySlider') slider: Slides;
+
+  public selected = 0;
+  public indicator = null;
+  public mySlideOptions2 =
+  {
+    loop: false,
+    effect: 'slide',
+    onSlideChangeStart: s => {
+
+      let currentIndex = this.slider.getActiveIndex();
+
+      if (currentIndex === 4) {
+        this.selected = 4;
+        this.indicator.style.webkitTransform = 'translate3d(400%,0,0)';
+      }
+      if (currentIndex === 3) {
+        this.selected = 3;
+        this.indicator.style.webkitTransform = 'translate3d(300%,0,0)';
+      }
+      if (currentIndex === 2) {
+        this.selected = 2;
+        this.indicator.style.webkitTransform = 'translate3d(200%,0,0)';
+      }
+      if (currentIndex === 1) {
+        this.selected = 1;
+        this.indicator.style.webkitTransform = 'translate3d(100%,0,0)';
+      }
+      if (currentIndex === 0) {
+        this.selected = 0;
+        this.indicator.style.webkitTransform = 'translate3d(0%,0,0)';
+      }
+    },
+    onTransitionStart: s => {
+      let currentIndex = this.slider.getActiveIndex();
+
+      if (currentIndex === 4) {
+        this.selected = 4;
+        this.indicator.style.webkitTransform = 'translate3d(400%,0,0)';
+      }
+
+      if (currentIndex === 3) {
+        this.selected = 3;
+        this.indicator.style.webkitTransform = 'translate3d(300%,0,0)';
+      }
+      if (currentIndex === 2) {
+        this.selected = 2;
+        this.indicator.style.webkitTransform = 'translate3d(200%,0,0)';
+      }
+      if (currentIndex === 1) {
+        this.selected = 1;
+        this.indicator.style.webkitTransform = 'translate3d(100%,0,0)';
+      }
+      if (currentIndex === 0) {
+        this.selected = 0;
+        this.indicator.style.webkitTransform = 'translate3d(0%,0,0)';
+      }
+    }
   };
 
-  items: Array<any>;
+  constructor(public navCtrl: NavController, public platform: Platform, public http: Http, public ytPlayer: YoutubeService, public yt:Youtube) {
+    this.platform = platform;
+    this.initialise(); 
 
-  API:any;
-  idAffiliate:any;
 
-  response:any;
-  responseRemEnCours:any;
-  responseRemEquipe:any;
+    //youtube 
+    this.loadSettings();
 
-  nombreFilleuls:any;
+      yt.playlist(this.channel).then(data => {
+        
+        console.log('...YOUTUBE...data...', data);
 
-  cagnotte:any = '';
+        this.id = data.items[0].id;
 
-  nomPack:any = ' ';
-  prixPack:any = ' ';
-  imagePack:any= ' ';
-  dateAbonnement:any;
-
-  avantages:any = [];
-  images:any = [];
-
-  @ViewChild('counter') counter:any;
-  @ViewChild('counter1') counter1:any;
-  @ViewChild('counter2') counter2:any;
-
-  constructor(public navCtrl: NavController,public api: Api, public navParams: NavParams , public vc:ViewController, public http:Http) {
-    console.log("Hello Accueil Page");
-  }
-
-  goToPacks(){
-    this.navCtrl.push(PacksPage);
-  }
-
-  goToBundles(){
-    this.navCtrl.push(BundlesPage);
-  }
-
-  goToPersonnel(){
-    //this.navCtrl.push(PersonnelPage);
-  }
-
-  getData(){
-    this.API = localStorage.getItem('api');
-    this.idAffiliate = localStorage.getItem('id_affiliate');
-
-    let URL:string = "http://"+this.API+"/Y_PROJECT/scripts/api_mobile/api_infos_affiliate.php?term="+this.idAffiliate;
-    let URLRemEnCours = "http://" + this.API + "/Y_PROJECT/scripts/api_mobile/api_statistique_remuneration_en_cours.php?term="+this.idAffiliate;
-    let URLRemEquipe = "http://" + this.API + "/Y_PROJECT/scripts/api_mobile/api_statistique_remuneration_equipe.php?term="+this.idAffiliate;
-
-    this.http.get(URL).subscribe((data)=>{
-      this.response = JSON.parse(data['_body']);
-
-      console.log("::response::", this.response);
-
-      if(this.response['creation_date']){
-
-          this.nombreFilleuls = this.response['nbr_filleul'];
-
-          console.log("nombre filleuls: ", this.nombreFilleuls);
-
-          this.nomPack = this.response['nom_bundle_en_cours'];
-          this.prixPack = Math.round(parseFloat(this.response['prix_pack_ttc']));
-
-          var dateArray = this.response['date_debut_abonnement'].split(' ')[0].split('-');
-
-          this.dateAbonnement ="souscrit le "+  dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0];
-
-          if(this.prixPack == 0 ){
-            this.prixPack = 'Gratuit';
-          }else{
-            this.prixPack = this.prixPack + " €/mois"
+        yt.playlistList(this.id).then(data => {
+          this.datas = data.items;
+          if(data.nextPageToken){
+            this.nextPageToken = data.nextPageToken;
           }
+        })
 
-          if(this.nomPack == "Fremium"){
-            this.imagePack = "assets/images/bundles/freemium.png";
-          }else if (this.nomPack == "Blue Sky"){
-            this.imagePack = "assets/images/bundles/bluesky.png";
-          }else if(this.nomPack == "Orange Mechanic"){
-            this.imagePack = "assets/images/bundles/orangemechanic.png";
-          }else if(this.nomPack == "Green Peace"){
-            this.imagePack = "assets/images/bundles/greenpeace.png";
-          }else if(this.nomPack == "Red Devil"){
-            this.imagePack = "assets/images/bundles/reddevil.png";
-          }else if(this.nomPack == "Black Star"){
-            this.imagePack = "assets/images/bundles/blackstar.png";
-          }
+    });
+  }
 
-          this.avantages = this.response['list_avantages_bundle'];
+  initialise(){
 
-          for (var i = 0; i < this.avantages.length; i++){
-              var link = "assets/images/avantages/" + this.avantages[i]['link_background'];
+    this.totalAffiliesEquipe = localStorage.getItem('nb_filleul_total'); 
+    this.affiliesNiv1 = localStorage.getItem('nb_affiliate_level_1');
+    this.affiliesNiv2 = localStorage.getItem('nb_affiliate_level_2');
+    this.affiliesNiv3 = localStorage.getItem('nb_affiliate_level_3');
+    this.affiliesNiv4 = localStorage.getItem('nb_affiliate_level_4');
+    this.affiliesNiv5 = localStorage.getItem('nb_affiliate_level_5');
+    this.affiliesNiv6 = localStorage.getItem('nb_affiliate_level_6');
 
-              this.avantages[i]['avantage_percent'] = Math.round(this.avantages[i]['avantage_percent']);
+    this.totalRecoEquipe = localStorage.getItem('nb_reco'); 
+    this.recosNiv0 = localStorage.getItem('nb_reco_level_0')
+    this.recosNiv1 = localStorage.getItem('nb_reco_level_1'); 
+    this.recosNiv2 = localStorage.getItem('nb_reco_level_2'); 
+    this.recosNiv3 = localStorage.getItem('nb_reco_level_3'); 
+    this.recosNiv4 = localStorage.getItem('nb_reco_level_4'); 
+    this.recosNiv5 = localStorage.getItem('nb_reco_level_5'); 
+    this.recosNiv6 = localStorage.getItem('nb_reco_level_6'); 
 
-              console.log("link_background :: ", link);
+    this.commissionEncaisser = localStorage.getItem('commission_a_encaisser'); 
+    this.remunerationPotentielle = localStorage.getItem('gain_potentiel'); 
+    this.remNiv0 = localStorage.getItem('remuneration_level_0'); 
+    this.remNiv1 = localStorage.getItem('remuneration_level_1'); 
+    this.remNiv2 = localStorage.getItem('remuneration_level_2'); 
+    this.remNiv3 = localStorage.getItem('remuneration_level_3'); 
+    this.remNiv4 = localStorage.getItem('remuneration_level_4'); 
+    this.remNiv5 = localStorage.getItem('remuneration_level_5'); 
+    this.remNiv6 = localStorage.getItem('remuneration_level_6'); 
 
-              this.images.push(link);
-          }
+  }
 
-          console.log("images", this.images);
-          console.log("nombre filleuls", this.nombreFilleuls);
-          console.log("nom pack", this.nomPack);
-          console.log("prix pack", this.prixPack);
-          console.log("date", this.dateAbonnement);
-          console.log("avantages", this.avantages);
-
-          this.demo = new CountUp(this.counter.nativeElement, 0, Math.round(parseInt(this.nombreFilleuls)), 0,  2.5, this.options);
-      }else {
-        this.navCtrl.setRoot(BundlesPage);
-      }
-        }, (error)=>{
-            console.error("error URL Info", error);
+  //YOUTUBE
+   infiniteScrool(ev){
+    if(this.nextPageToken){
+      this.yt.playlistList_page(this.id, this.nextPageToken).then(data=>{
+        for(let i of data.items){
+          this.datas.push(i);
+        }
+        if(!data.nextPageToken){
+          this.nextPageToken = null;
+        }else{
+          this.nextPageToken = data.nextPageToken;
+        }
+        ev.complete();
       });
+    }else{
+      ev.complete();
+    }
+  }
+  //END YOUTUBE
 
-    this.http.get(URLRemEnCours).subscribe((data)=>{
-      this.responseRemEnCours = JSON.parse(data['_body']);
+  ionViewDidEnter() {
+    this.scrollTab.go2Tab(0);
+  }
 
-      this.cagnotte =this.responseRemEnCours[this.responseRemEnCours.length - 1];
+  tabChange(data: any) {
+    this.selectedTab = data.selectedTab;
+  }
 
-      localStorage.setItem('remEnCours', this.cagnotte );
+  select(index) {
+    this.selected = index;
+    if (index === 4) 
+      this.indicator.style.webkitTransform = 'translate3d(400%,0,0)';
+    if (index === 3) 
+      this.indicator.style.webkitTransform = 'translate3d(300%,0,0)';
+    if (index === 2)
+      this.indicator.style.webkitTransform = 'translate3d(200%,0,0)';
+    if (index === 1)
+      this.indicator.style.webkitTransform = 'translate3d(100%,0,0)';
+    if (index === 0)
+      this.indicator.style.webkitTransform = 'translate3d(0%,0,0)';
+    this.slider.slideTo(index, 500);
+  }
 
-      this.demo1 = new CountUp(this.counter1.nativeElement, 0, Math.round(parseInt(this.cagnotte)) , 0, 2.5, this.options);
+  onSlideChanged($event) {
+    if (!(((($event.touches.startX - $event.touches.currentX) <= 100) || (($event.touches.startX - $event.touches.currentX) > 0)) && (this.slider.isBeginning() || this.slider.isEnd()))) {
+      this.indicator.style.webkitTransform = 'translate3d(' + (-($event.translate) / 4) + 'px,0,0)';
+    }
 
-      }, (error)=>{
-        console.error("error URL Remuneration en cours", error);
-    });
+  }
 
-    this.http.get(URLRemEquipe).subscribe((data) => {
-        this.responseRemEquipe = JSON.parse(data['_body']);
+  panEvent(e) {
+    let currentIndex = this.slider.getActiveIndex();
+    if (currentIndex === 4) {
+      this.selected = 4;
+      this.indicator.style.webkitTransform = 'translate3d(300%,0,0)';
+    }
+    if (currentIndex === 3) {
+      this.selected = 3;
+      this.indicator.style.webkitTransform = 'translate3d(300%,0,0)';
+    }
+    if (currentIndex === 2) {
+      this.selected = 2;
+      this.indicator.style.webkitTransform = 'translate3d(200%,0,0)';
+    }
+    if (currentIndex === 1) {
+      this.selected = 1;
+      this.indicator.style.webkitTransform = 'translate3d(100%,0,0)';
+    }
+    if (currentIndex === 0) {
+      this.selected = 0;
+      this.indicator.style.webkitTransform = 'translate3d(0%,0,0)';
+    }
+  }
 
-        let remEquipe = this.responseRemEquipe[this.responseRemEquipe.length  - 1];
-
-        localStorage.setItem('remEquipe', remEquipe);
-
-        this.demo2 = new CountUp(this.counter2.nativeElement, 0, remEquipe, 0, 2.5, this.options);
-
-    }, (error) => {
-      console.error("error URL Remuneration équipe", error);
-    });
+  getData() {
+    // this.nombreFilleuls = localStorage.getItem('nb_filleul_total'); 
+    // this.affiliesNiv1 = localStorage.getItem('nb_affiliate_level_1'); 
+    // this.affiliesNiv2 = localStorage.getItem('nb_affiliate_level_2'); 
+    // this.demo = new CountUp(this.counter.nativeElement, 0, Math.round(parseInt(this.nombreFilleuls)), 0,  2.5, this.options);
+    // this.demo1 = new CountUp(this.counter1.nativeElement, 0, Math.round(parseInt(this.affiliesNiv1)), 0,  2.5, this.options);
+    // this.demo2 = new CountUp(this.counter2.nativeElement, 0, Math.round(parseInt(this.affiliesNiv2)), 0,  2.5, this.options);  
   }
 
   ngAfterViewInit() {
+    // this.getData();
 
-    this.getData();
+    // this.indicator = document.getElementById("indicatorFor4");
+    // if (this.platform.is('windows')) {
+    //   this.indicator.style.opacity = '0';
+    // }
 
-    setInterval(() => {
-      this.demo.start();
-      this.demo1.start();
-      this.demo2.start();
-    }, 300);
-
+    // setInterval(() => {
+    //   this.demo.start();
+    //   this.demo1.start();
+    //   this.demo2.start();
+    // }, 500);
   }
 
-   goToRemEnCours(){
-      this.navCtrl.push(Stats1Page);
-   }
+  goAffiliesNiv1(){
+    this.navCtrl.push(FilleulsPage); 
+  }
+ 
+	goFinancement(){ 
+		this.navCtrl.push(SimulateurfinancementPage); 
+	  }
 
-   goToRemMois(){
-      this.navCtrl.push(Stats2Page);
-   }
+	  goNotaire(){
+		this.navCtrl.push(SimulateurnotairePage); 
+	  }
 
-    goToFilleuls(){
-      this.navCtrl.push(Stats3Page, {'filleuls': this.nombreFilleuls});
-   }
+	  goGains(){
+		this.navCtrl.push(SimulateurgainsPage); 
+	  }
+
+    //YOUTUBE LOGIC 
+
+    launchYTPlayer(id, title): void {
+    this.ytPlayer.launchPlayer(id, title);
+  }
+
+  fetchData(): void {
+
+    let url = 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&channelId=' 
+              + this.channelID 
+              + '&q=' + this.searchQuery 
+              + '&type=video&order=viewCount&maxResults=' + this.maxResults 
+              + '&key=' + this.googleToken;
+
+    console.log(url); 
+
+    if(this.pageToken) {
+      url += '&pageToken=' + this.pageToken;
+    }
+
+    this.http.get(url).map(res => res.json()).subscribe(data => {
+      
+      console.log (data.items);
+      // *** Get individual video data like comments, likes and viewCount. Enable this if you want it.
+      // let newArray = data.items.map((entry) => {
+      //   let videoUrl = 'https://www.googleapis.com/youtube/v3/videos?part=id,snippet,contentDetails,statistics&id=' + entry.id.videoId + '&key=' + this.googleToken;
+      //   this.http.get(videoUrl).map(videoRes => videoRes.json()).subscribe(videoData => {
+      //     console.log (videoData);
+      //     this.posts = this.posts.concat(videoData.items);
+      //     return entry.extra = videoData.items;
+      //   });
+      // });
+      this.posts = this.posts.concat(data.items);
+    });
+    }
+    loadSettings(): void {
+        this.fetchData();
+    }
+    openSettings(): void {
+        console.log("TODO: Implement openSettings()");
+    }
+    playVideo(e, post): void {
+        console.log(post);
+        this.onPlaying = true;
+        this.ytPlayer.launchPlayer(post.id, post.snippet.title);
+    }
+    loadMore(): void {
+        console.log("TODO: Implement loadMore()");
+    }
+
+
 
 }

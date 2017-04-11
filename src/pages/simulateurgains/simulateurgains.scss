@@ -1,0 +1,70 @@
+page-simulateurgains {
+	
+	font-family: 'catamaran-medium-webfont';
+	
+	.toolbar-ios, toolbar-md {
+	min-height: 60px !important;
+	}
+		
+	.toolbar-background-ios, .toolbar-background-md {
+	background-color: transparent;
+	border-bottom: none !important;	
+	}
+	
+	ion-content {
+	background: #FAFAFA !important;
+	}
+	
+	.bar-button-default-ios, .bar-button-default-md {
+	color: #4f7abd;
+	}
+	
+	.list-header-ios, .list-header-md {
+	font-size: 1.3rem;
+	background-color: transparent;
+	border-top: none;
+	text-transform: uppercase;
+	margin-bottom: 0;	
+	}
+	
+	.result {
+		
+		font-size: 1.3rem;
+		color: #818187;
+		
+		ion-icon {
+		font-size: 1.6rem;
+		font-weight: bold;
+		}
+		
+		h5 {
+		text-transform: uppercase;
+		color:#303030;
+		font-size: 1.4rem;
+		}
+		
+		.card-ios, card-md {
+		background: linear-gradient(135deg, rgba(50,183,255,1) 0%,rgba(0,91,249,1) 100%);
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+		color:#fff;
+		}
+		
+		ion-card-header {
+		text-transform: uppercase;
+		font-size: 1.4rem;
+		color: #fff;
+		opacity: 0.8;
+		font-family: 'catamaran-medium-webfont';
+		padding: 15px;
+		letter-spacing: 0.2rem;
+		}
+		
+		ion-card-content {
+		font-size: 2.3rem;
+		}
+		
+		
+	}
+
+}

@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 
 import { Http } from '@angular/http';
 
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
-
-/*
-  Generated class for the Parrainer page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 
 export interface CountdownTimer {
   daysString:string;
@@ -36,23 +29,10 @@ export class ParrainerPage {
     timeInSeconds: number;
     private timer:CountdownTimer = null;
 
-    user = {
-        "gender": '',
-        "nom": '',
-        "prenom": '',
-        "telephone": '',
-        "email": '',
-        "confirmEmail":'',
-        "codePostal": '',
-        "ville": '',
-        "dateNaissance": '',
-    }
+    user:any; 
 
     API:any;
     parrainerForm: FormGroup;
-
-    idParrain:any;
-    nomParrain:any;
 
     sec_num:any;
 
@@ -63,11 +43,23 @@ export class ParrainerPage {
     minutesString:string = '';
     secondsString:string = '';
 
-  constructor(public navCtrl: NavController, public alertController:AlertController, public fb:FormBuilder, public http:Http) {
+  constructor(public navCtrl: NavController, public alertController:AlertController, public loadingController:LoadingController, public fb:FormBuilder, public http:Http) {
+
 
     this.API = localStorage.getItem('api');
-    this.idParrain =  localStorage.getItem('id_affiliate');
-    this.nomParrain = localStorage.getItem('nom').split(' ')[0];
+
+    this.user = {
+        "gender": '',
+        "nom": '',
+        "prenom": '',
+        "mobile": '',
+        "email": '',
+        "email2":'',
+        "cp": '',
+        "ville": '',
+        "name_parrain": localStorage.getItem('first_name'), 
+        "id_parrain": localStorage.getItem('id_affiliate'), 
+    }
 
     this.validateForm();
   }
@@ -83,42 +75,52 @@ export class ParrainerPage {
        "confirmEmail":['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9-_]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$')])],
        "codePostal" :  ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('^[0-9\. ]+$')])],
        "ville": ['', Validators.compose([Validators.required, Validators.maxLength(20), Validators.pattern('^[a-zA-Z - àâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ\. ]+$')])],
-       "dateNaissance": ['', Validators.required],
     });
   }
 
-  parrainer(){
+parrainer(){
 
-      if(this.user.gender == "m"){
-          this.user.gender = "1";
-      }else if (this.user.gender == "f"){
-          this.user.gender = "2";
-      }
+    this.showLoading();
 
-    let URL:string = 'http://'+this.API+'/Y_PROJECT/scripts/api_mobile/api_parrainer.php'
-                        +'?civilite=' + this.user.gender
-                        +'&first_name='+this.user.prenom
-                        +'&last_name='+this.user.nom
-                        +'&phone_number='+this.user.telephone
-                        +'&email='+this.user.email
-                        +'&email2='+this.user.confirmEmail
-                        +'&zip_code='+this.user.codePostal
-                        +'&city='+this.user.ville
-                        +'&birth_date='+this.user.dateNaissance
-                        +'&id_parrain='+this.idParrain
-                        +'&name_parrain='+this.nomParrain
+    let URL:string = this.API + 'api_inscription_mobile.php'; 
 
-    console.log("user", this.user);
+    console.log("user parrainer", this.user);
     console.log("URL parrainer", URL);
 
-    this.http.get(URL).subscribe(data =>{
-      let response = JSON.parse(data['_body'])
+    this.http
+        .post(URL, this.user)
+        .subscribe(
+            data => { 
+                console.log('datatata', data);
+                this.response = JSON.parse(data['_body']);
 
-      this.showAlert(" ", response['msg_error'], "OK");
+                
 
-    },error => {
-      console.log(error);
-    });
+                if(this.response['data'] == 100){
+                    this.showAlert(" ", "VOTRE AMI EST MAINTENANT INSCRIT.", "OK"); 
+                    
+                    this.user = {
+                        "gender": '',
+                        "nom": '',
+                        "prenom": '',
+                        "mobile": '',
+                        "email": '',
+                        "email2":'',
+                        "cp": '',
+                        "ville": '',
+                        "name_parrain": localStorage.getItem('first_name'), 
+                        "id_parrain": localStorage.getItem('id_affiliate'), 
+                    }
+
+                }else{
+                    this.showAlert(" ", this.response['ERROR_MESSAGE'], "OK"); 
+                }
+
+            }, 
+            error => {
+                console.log('error', error); 
+            }
+        );
   }
 
   //fonction generique pour afficher les alertes
@@ -130,6 +132,16 @@ export class ParrainerPage {
        });
        alert.present();
    }
+
+      //fonction generique pour afficher le LoadingController
+   showLoading(){
+     let loading = this.loadingController.create({
+         content: " ",
+         duration: 1000
+      });
+      loading.present();
+   }
+
 
   //timer
   ngOnInit() {
@@ -209,5 +221,7 @@ export class ParrainerPage {
 
         return '<span class="days">'+ daysString + '</span> jours <span class="hours">' +  hoursString + '</span> heures <span class="minutes">' +  minutesString + '</span> minutes <span class="seconds">' + secondsString + '</span> secondes';
     }
+
+
 
 }

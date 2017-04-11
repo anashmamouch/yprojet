@@ -2,18 +2,16 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>Ionic App</title>
+  <title>NosRezo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
   <link rel="manifest" href="assets/manifest.json">
-  <link href="animate.css" rel="stylesheet">
 
-  <!--amCharts-->
-  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
   <meta name="theme-color" content="#4e8ef7">
+
 
   <!-- un-comment this code to enable service worker
   <script>
@@ -39,52 +37,7 @@
   <script src="build/polyfills.js"></script>
 
   <!-- The bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
-
-  <script>
-  function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('place')),
-            {types: ['geocode']});
-
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete.addListener('place_changed', function(){
-          // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-
-          console.log(place.address_components); 
-        });
-      }
-  </script>
-
-  <!-- load google map & google places api -->
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&callback=initAutocomplete"></script>
-
-  <!--Stripe Checkout integration -->
-  <script src="https://checkout.stripe.com/checkout.js"></script>
-
-  <!--fusioncharts-->
-  <script src="fusioncharts.js"></script>
-  <script src="fusioncharts.charts.js"></script>
-  <script src="fusioncharts.theme.fint.js"></script>
-  <script src="fusioncharts.widgets.js"></script>
-
-  <script>
-    function onClick(data, value, percentage){ 
-        console.log("clicked data: "+ data ); 
-       
-        var element = document.getElementById('description'); 
-
-        percentage =  parseFloat(Math.round((percentage * 100) * 100) / 100).toFixed(2); 
-
-        element.innerHTML = "Pack: " + data + " | Valeur: " + value + " | Pourcentage: " + percentage + "%" ;  
-    }
-
-  </script>
-	
+  <script src="build/main.js"></script>	
 
 </body>
 </html>

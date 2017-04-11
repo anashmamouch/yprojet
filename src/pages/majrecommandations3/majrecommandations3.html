@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Recommandations</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-label stacked>Délai de relance</ion-label>
+      <ion-list>
+          <button ion-item (click)="choose(3, '3 jours')" value="3">3 jours</button>
+          <button ion-item (click)="choose(4, '4 jours')" value="4">4 jours</button>
+          <button ion-item (click)="choose(5, '5 jours')" value="5">5 jours</button>
+          <button ion-item (click)="choose(6, '6 jours')" value="6">6 jours</button>
+          <button ion-item (click)="choose(7, '7 jours')" value="7" selected>7 jours</button>
+          <button ion-item (click)="choose(8, '8 jours')" value="8">8 jours</button>
+          <button ion-item (click)="choose(9, '9 jours')" value="9">9 jours</button>
+          <button ion-item (click)="choose(10, '10 jours')" value="10">10 jours</button>
+          <button ion-item (click)="choose(11, '11 jours')" value="11">11 jours</button>
+          <button ion-item (click)="choose(12, '12 jours')" value="12">12 jours</button>
+          <button ion-item (click)="choose(13, '13 jours')" value="13">13 jours</button>
+          <button ion-item (click)="choose(14, '14 jours')" value="14">14 jours</button>
+          <button ion-item (click)="choose(15, '15 jours')" value="15">15 jours</button>
+          <button ion-item (click)="choose(30, '1 mois')" value="30">1 mois</button>
+          <button ion-item (click)="choose(60, '2 mois')" value="60">2 mois</button>
+          <button ion-item (click)="choose(90, '3 mois')" value="90">3 mois</button>
+          <button ion-item (click)="choose(180, '6 mois')" value="180">6 mois</button>
+          <button ion-item (click)="choose(360, '12 mois')" value="360">12 mois</button>
+      </ion-list>
+
+</ion-content>

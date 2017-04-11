@@ -2,7 +2,12 @@
   "globalDependencies": {
     "amcharts": "registry:dt/amcharts#0.0.0+20160909114300",
     "fusioncharts": "registry:dt/fusioncharts#3.11.2+20161025183635",
-    "google.maps": "registry:dt/google.maps#3.25.0+20161019131407"
+    "google.maps": "registry:dt/google.maps#3.25.0+20161019131407",
+    "stripe": "registry:dt/stripe#2.0.0+20170223151516",
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "gapi": "registry:dt/gapi#0.0.0+20160412153822",
+    "gapi.youtube": "registry:dt/gapi.youtube#0.0.0+20160317120654",
+    "youtube": "registry:dt/youtube#0.0.0+20160317120654"
   },
   "dependencies": {
     "d3": "registry:npm/d3#3.0.0+20160723033700"

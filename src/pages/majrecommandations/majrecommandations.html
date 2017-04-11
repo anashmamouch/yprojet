@@ -1,0 +1,132 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mise A Jour</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+ 
+
+      <ion-list class="inscription">
+
+        <ion-item>
+             <strong text-center> 
+                {{recoTraiter.r_first_name}} {{recoTraiter.r_last_name}} <br/>
+                R{{recoTraiter.id_recommandation}} <br/> 
+                {{recoTraiter.r_category}} à  {{recoTraiter.ville_reco}}<br>
+             </strong>
+        </ion-item>
+    <div [formGroup] = "recommandationsForm">
+        <ion-item >
+          <ion-label stacked>Ou en êtes vous?</ion-label>
+          <ion-select formControlName="etapeReco" name="etapeReco" [(ngModel)]="etapeReco">
+                    
+                <div *ngIf="recoTraiter.r_status != 7">
+                  
+                    <div *ngIf="recoTraiter.r_status == 3 || recoTraiter.r_status == 4">
+                      <!--Etape 4-->
+                      <ion-option *ngIf="recoTraiter.r_category == 'recrutement'" value="4" >4 - RDV planifié pour une présentation</ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' || recoTraiter.r_category == 'travaux' || recoTraiter.r_category == 'autres'" value="4" >4 - RDV planifié </ion-option>
+
+                      <!--Etape 5-->
+                      <ion-option *ngIf="recoTraiter.r_category == 'recrutement'" value="5" >5 - Présentation réalisée </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="5" >5 - Simulation réalisée</ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="5" >5 - Estimation réalisée </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'travaux'" value="5" >5 - Devis envoyé" </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'autres'" value="5">5 - Devis envoyé </ion-option>
+                  </div>
+
+                    <div *ngIf="recoTraiter.r_status != 3 || recoTraiter.r_status == 4">
+                      <!--Etape 5-->
+                      <ion-option *ngIf="recoTraiter.r_category == 'recrutement'" value="5" >5 - Présentation réalisée </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="5" >5 - Simulation réalisée </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="5" >5 - Estimation réalisée </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'travaux'" value="5" >5 - Devis envoyé </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'autres'" value="5" >5 - Devis envoyé </ion-option>
+                  </div>
+
+
+                  <div *ngIf="recoTraiter.r_status == 5">
+                      <!--Etape6-->
+                      <ion-option *ngIf="recoTraiter.r_category == 'recrutement'" value="6" >6 - Embauche - A relancer dans </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="6" >6 - Financement accepté </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="6">6 - Mandat signé </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'travaux'" value="6" >6 - Devis des travaux accepté </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'autres'" value="6">6 - Devis des travaux accepté </ion-option>
+                  </div>
+
+                  <div *ngIf="recoTraiter.r_status == 6">
+                      <ion-option *ngIf="recoTraiter.r_category == 'recrutement'" value="7" >7 - 1ière vente réalisée - En attente Facture NosRezo </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="7" >7 - Financement accepté par client </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="7" >7 - Compromis signé </ion-option>
+                      <ion-option *ngIf="recoTraiter.r_category != 'immobilier' && recoTraiter.r_category != 'recrutement'" value="7" >7 - Vente réalisée - En attente Facture NosRezo </ion-option>
+                  </div>
+                      
+                      <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                      <ion-option  value="33" >Dossier en cours - J'ai laissé un message au client </ion-option>
+                      <ion-option  value="36" >Dossier en cours - Projet à réaliser dans le future </ion-option>
+                      <ion-option  value="35" >Dossier en cours  </ion-option>
+                      <ion-option  value="-1" >- - - - - - - - - - - - - - -</ion-option>
+                      <ion-option  value="41" >Fermer ce dossier - Vendu par la concurrence </ion-option>
+                      <ion-option  value="0" >Fermer ce dossier - Contact non intéressé par nos services / Déjà en contact </ion-option>
+                  </div>
+
+                  <div *ngIf="recoTraiter.r_status == 7">
+                      <ion-option  value="8" >8 - Paiement réalisé auprès de NosRezo </ion-option>
+                      <ion-option  value="35" >Dossier en cours</ion-option>
+                  </div>
+    
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Délai de relance</ion-label>
+          <ion-select formControlName="delaiRelance" name="delaiRelance" [(ngModel)]="delaiRelance">
+              <ion-option value="3">3 jours</ion-option>
+              <ion-option value="4">4 jours</ion-option>
+              <ion-option value="5">5 jours</ion-option>
+              <ion-option value="6">6 jours</ion-option>
+              <ion-option value="7" selected>7 jours</ion-option>
+              <ion-option value="8">8 jours</ion-option>
+              <ion-option value="9">9 jours</ion-option>
+              <ion-option value="10">10 jours</ion-option>
+              <ion-option value="11">11 jours</ion-option>
+              <ion-option value="12">12 jours</ion-option>
+              <ion-option value="13">13 jours</ion-option>
+              <ion-option value="14">14 jours</ion-option>
+              <ion-option value="15">15 jours</ion-option>
+              <ion-option value="30">1 mois</ion-option>
+              <ion-option value="60">2 mois</ion-option>
+              <ion-option value="90">3 mois</ion-option>
+              <ion-option value="180">6 mois</ion-option>
+              <ion-option value="360">12 mois</ion-option>
+          </ion-select>
+        </ion-item>
+<!--
+        <ion-item *ngIf="recoTraiter.r_status >= 7 && (recoTraiter.r_sub_category_code == 1 || recoTraiter.r_sub_category_code == 50)">
+            <label>
+                <ion-item>Identifiant IAD</ion-item>
+                <ion-input  type="text" id="id_iad_transaction" name="id_iad_transaction" [(ngModel)]="recoTraiter.id_iad_transaction"></ion-input>
+            </label>
+        </ion-item>  
+-->
+        <ion-item>
+          <ion-label stacked>Montant des honoraires</ion-label>
+          <ion-input formControlName="montantHonoraires" name="montantHonoraires" [(ngModel)]="montantHonoraires"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Commentaire</ion-label>
+          <ion-textarea formControlName="description" name="description" [(ngModel)]="description"></ion-textarea>
+        </ion-item>
+      </div>
+      </ion-list>
+
+
+      <button ion-button (click)="mettreAJour()" [disabled]="!recommandationsForm.valid" block>Mettre à jour</button>
+
+</ion-content>

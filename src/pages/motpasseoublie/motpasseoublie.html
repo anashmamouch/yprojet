@@ -1,9 +1,4 @@
-<!--
-  Generated template for the Motpasseoublie page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -12,17 +7,21 @@
 
 </ion-header>
 
-<ion-content padding class="home-background" [ngStyle]="{ 'background-image': 'url(' + backgroundImage + ')' } "> 
-
-      <h5 class="title-password" margin-top text-center color="fresh">Laissez-nous vous aider à le retrouver</h5>
-      <div [formGroup]="motpasseoublieForm">
-        <ion-list>
-           <ion-item class="login-item bold">
-             <ion-input text-center type="text" formControlName="email" [(ngModel)]="user.email" placeholder = "Saisissez votre adresse email"></ion-input>
-           </ion-item>
-         </ion-list>
-      </div>
-     <button (click)="reinitialiserMotPasse()" ion-button [disabled]="!motpasseoublieForm.valid" block outline round color="fresh" class="login-button">Réinitialiser mot de passe</button>
-
-
+<ion-content padding class="home-background"> 
+	
+    <div class="mdp">
+	<div [formGroup]="motpasseoublieForm">
+      <ion-item>
+	  <ion-icon name="mail" item-left color="nosrezo"></ion-icon>
+      <ion-input type="text" formControlName="email" [(ngModel)]="email" placeholder = "Saisissez votre adresse email"></ion-input>
+      </ion-item>
+    </div>
+	</div>  
+	
 </ion-content>
+
+<ion-footer>
+	
+      <button (click)="reinitialiserMotPasse()" ion-button [disabled]="!motpasseoublieForm.valid" text-uppercase clear full color="fresh" class="action-button">Récupérer</button>
+	
+</ion-footer>

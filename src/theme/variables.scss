@@ -36,10 +36,10 @@ $colors: (
   attraction-color: #327eff,
   border-color: #327eff,
 
-  yers:       #CE0097,
+  nosrezo:    #4f7abd,
   favorite:   #69BB7B, 
   gray:       #F7F7F7,
-  fb-color:   #3B5998,
+  fb-color:   #2b4b84,
   white:      #FFFFFF,
   chat-bg:    #EDECEC,
   chat-bubble:#C4EBF7,
@@ -48,17 +48,20 @@ $colors: (
 $button-ios-outline-border-width: 2px;
 $button-md-outline-border-width: 2px;
 
-$button-ios-outline-text-color-activated: #4e00ff !important;
-$button-md-outline-text-color-activated: #4e00ff !important;
+$button-ios-outline-text-color-activated: #fff !important;
+$button-md-outline-text-color-activated: #fff !important;
 
-$button-ios-outline-background-color-activated: #fff !important;
-$button-md-outline-background-color-activated: #fff !important;
+$button-ios-outline-background-color-activated: #4f7abd !important;
+$button-md-outline-background-color-activated: #4f7abd !important;
 
-$button-ios-height: 3em;
-$button-md-height: 3em;
+$button-ios-height: 2.5em;
+$button-md-height: 2.5em;
 
-$button-ios-background-color-activated: transparent !important;
-$button-md-background-color-activated: transparent !important;
+$button-ios-background-color-activated: #4f7abd !important;
+$button-md-background-color-activated: #4f7abd !important;
+
+$button-ios-clear-background-color-activated: transparent !important;
+$button-md-clear-background-color-activated: transparent !important;
 
 $tabs-ios-tab-color-active: #fff !important;
 $tabs-md-tab-color-active: #fff !important;
@@ -66,12 +69,12 @@ $tabs-md-tab-color-active: #fff !important;
 $tabs-ios-tab-icon-size: 35px;
 $tabs-md-tab-icon-size: 35px;
 
-$toolbar-ios-height: 60px;
-$toolbar-md-height: 60px;
+$toolbar-ios-height: 55px;
+$toolbar-md-height: 55px;
 
-$toolbar-background: #6600BA;
+$toolbar-background: #4f7abd;
 
-$toolbar-border-color: #333;
+$toolbar-border-color: #4f7abd;
 
 $toolbar-ios-title-font-weight: 500;
 $toolbar-md-title-font-weight: 500;
@@ -79,8 +82,8 @@ $toolbar-md-title-font-weight: 500;
 $toolbar-ios-button-color: #f4f4f4;
 $toolbar-md-button-color: #f4f4f4;
 
-$toolbar-ios-button-font-size: 2.1rem;
-$toolbar-md-button-font-size: 2.1rem;
+$toolbar-ios-button-font-size: 1.9rem;
+$toolbar-md-button-font-size: 1.9rem;
 
 $content-padding: 20px;
 
@@ -89,12 +92,12 @@ $list-border-color: #EDEDED;
 $item-ios-body-text-font-size: 1.4rem;
 $item-md-body-text-font-size: 1.4rem;
 
-$item-ios-body-text-font-family: lato-regular-webfont;
-$item-md-body-text-font-family: lato-regular-webfont;
+$item-ios-body-text-font-family: catamaran-medium-webfont;
+$item-md-body-text-font-family: catamaran-medium-webfont;
 
 $radio-ios-color-on: #fc6644;
 
-
+$text-input-placeholder-color: #fff;
 
 // App Theme
 // --------------------------------------------------

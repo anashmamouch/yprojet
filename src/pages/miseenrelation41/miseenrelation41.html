@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+<ion-card>
+  <img [src]="image"/>
+  <ion-card-content>
+    <ion-card-title>
+      {{title}}
+    </ion-card-title>
+      <p>{{description}}</p>
+	
+      <h4 margin-top color="nosrezo"><ion-icon name="ios-quote-outline"></ion-icon> Comment en parler autour de vous ?</h4>
+      
+	    <p>{{commentParler}}</p>
+  </ion-card-content>
+</ion-card>
+
+<div class="remuneration" text-center>
+    <h4 color="fresh">Rémunération moyenne</h4>
+	<h2 color="fresh">{{remMoyenne}}</h2>
+</div>
+
+	
+</ion-content>

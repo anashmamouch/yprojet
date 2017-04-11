@@ -1,0 +1,131 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{recoTraiter.r_first_name}} {{recoTraiter.r_last_name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+	
+  <div padding text-center>
+  <h5>{{recoTraiter.r_first_name}} {{recoTraiter.r_last_name}}</h5>
+  <p no-margin><strong>Référence :</strong> R{{recoTraiter.id_recommandation}}</p>
+  <p no-margin>{{recoTraiter.r_category}} à {{recoTraiter.ville_reco}}</p>  
+  </div>
+
+  <ion-list>
+	  
+	  	 <ion-list-header>
+	  	 Ou en êtes-vous ?
+	 	 </ion-list-header>
+
+                <div *ngIf="recoTraiter.r_status != 7">
+               
+                    <div *ngIf="recoTraiter.r_status == 3 || recoTraiter.r_status == 4">
+						
+	
+                      <!--Etape 4-->
+                      <button ion-item (click)="choose(4,test,  'RDV planifié pour une présentation')" *ngIf="recoTraiter.r_category == 'recrutement'" value="4"><strong>4</strong> RDV planifié pour une présentation</button>
+                      <button ion-item (click)="choose(4, 'RDV planifié')" *ngIf="recoTraiter.r_category == 'immobilier' || recoTraiter.r_category == 'travaux' || recoTraiter.r_category == 'autres'" value="4" ><strong>4</strong> RDV planifié </button>
+
+                      <!--Etape 5-->
+					  <ion-list-header>Etape 5</ion-list-header>
+                      <button ion-item (click)="choose(5, 'Présentation réalisée')" *ngIf="recoTraiter.r_category == 'recrutement'" value="5" ><strong>5</strong> Présentation réalisée </button>
+                      <button ion-item (click)="choose(5, 'Simulation réalisée')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="5" ><strong>5</strong> Simulation réalisée</button>
+                      <button ion-item (click)="choose(5, 'Estimation réalisée')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="5" ><strong>5</strong> Estimation réalisée </button>
+                      <button ion-item (click)="choose(5, 'Devis envoyé')" *ngIf="recoTraiter.r_category == 'travaux'" value="5" ><strong>5</strong> Devis envoyé" </button>
+                      <button ion-item (click)="choose(5, 'Devis envoyé')" *ngIf="recoTraiter.r_category == 'autres'" value="5"><strong>5</strong> Devis envoyé </button>
+						
+                  </div>
+
+                    <div *ngIf="recoTraiter.r_status != 3 || recoTraiter.r_status == 4">
+						
+					  <ion-item-group>
+						
+					  <ion-item-divider color="light">Etape 5</ion-item-divider>
+					  
+                      <!--Etape 5-->
+                      <button ion-item (click)="choose(5, 'Présentation réalisée')" *ngIf="recoTraiter.r_category == 'recrutement'" value="5" >Présentation réalisée </button>
+                      <button ion-item (click)="choose(5, 'Simulation réalisée')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="5" >Simulation réalisée </button>
+                      <button ion-item (click)="choose(5, brother, 'Estimation réalisée')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="5" > Estimation réalisée
+					  </button>
+                      <button ion-item (click)="choose(5, 'Devis envoyé')" *ngIf="recoTraiter.r_category == 'travaux'" value="5" >Devis envoyé 
+					  </button>
+                      <button ion-item (click)="choose(5, 'Devis envoyé')" *ngIf="recoTraiter.r_category == 'autres'" value="5" >Devis envoyé 
+					  </button>
+						  
+					  </ion-item-group>
+						
+                  </div>
+
+
+                  <div *ngIf="recoTraiter.r_status == 5">
+					  
+					  <ion-item-group>
+						
+					  <ion-item-divider color="light">Etape 6</ion-item-divider>
+					  
+                      <!--Etape6-->
+                      <button ion-item (click)="choose(6, 'Embauche - A relancer dans')" *ngIf="recoTraiter.r_category == 'recrutement'" value="6" >Embauche - À relancer dans </button>
+                      <button ion-item (click)="choose(6, 'Financement accepté')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="6" >Financement accepté </button>
+                      <button ion-item (click)="choose(6, 'Mandat signé')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="6">Mandat signé </button>
+                      <button ion-item (click)="choose(6, 'Devis des travaux accepté')" *ngIf="recoTraiter.r_category == 'travaux'" value="6" >Devis des travaux accepté </button>
+                      <button ion-item (click)="choose(6, 'Devis des travaux accepté')" *ngIf="recoTraiter.r_category == 'autres'" value="6">Devis des travaux accepté </button>
+						  
+					  </ion-item-group>
+					  
+                  </div>
+
+                  <div *ngIf="recoTraiter.r_status == 6">
+					  
+					  <ion-item-group>
+						
+					  <ion-item-divider color="light">Etape 7</ion-item-divider>
+					  
+                      <button ion-item (click)="choose(7, '1ière vente réalisée - En attente Facture NosRezo')" *ngIf="recoTraiter.r_category == 'recrutement'" value="7" >1ère vente réalisée - En attente Facture </button>
+                      <button ion-item (click)="choose(7, 'Financement accepté par client')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code == 4" value="7" >Financement accepté par client </button>
+                      <button ion-item (click)="choose(7, 'Compromis signé')" *ngIf="recoTraiter.r_category == 'immobilier' && recoTraiter.r_sub_category_code != 4" value="7" >Compromis signé </button>
+                      <button ion-item (click)="choose(7, 'Vente réalisée - En attente Facture NosRezo')" *ngIf="recoTraiter.r_category != 'immobilier' && recoTraiter.r_category != 'recrutement'" value="7" >Vente réalisée - En attente Facture</button>
+						  
+					  </ion-item-group>
+					  
+                  </div>
+					
+					  <ion-item-group>
+						
+					  <ion-item-divider color="light">Dossier en cours</ion-item-divider>
+          
+                      <button ion-item (click)="choose(33, 'Dossier en cours - Jai laissé un message au client')" value="33" >J'ai laissé un message au client </button>
+                      <button ion-item (click)="choose(36, 'Dossier en cours - Projet à réaliser dans le future')" value="36" >Projet à réaliser dans le future </button>
+                      <button ion-item (click)="choose(35, 'Dossier en cours')" value="35" >Dossier en cours  </button>
+						  
+					  <ion-item-group>
+						
+					  <ion-item-divider color="light">Fermer le dossier</ion-item-divider>
+						
+                      <button ion-item   (click)="choose(41, 'Fermer ce dossier - Vendu par la concurrence')" value="41" >Vendu par la concurrence </button>
+                      <button ion-item (click)="choose(0, 'Fermer ce dossier - Contact non intéressé par nos services / Déjà en contact ')" value="0" >Contact non intéressé / Déjà en contact </button>
+					  
+					  </ion-item-group>
+						  
+					  </ion-item-group>
+					
+                  </div>
+
+                  <div *ngIf="recoTraiter.r_status == 7">
+					  
+					  <ion-item-group>
+						
+					  <ion-item-divider color="light">Etape 8</ion-item-divider>
+					  
+                      <button ion-item (click)="choose(8, 'Paiement réalisé auprès de NosRezo')" value="8" >Paiement réalisé auprès de NosRezo </button>
+                      <button ion-item (click)="choose(35, 'Dossier en cours')" value="35" >Dossier en cours</button>
+						  
+					  </ion-item-group>
+					  
+                  </div>
+	  
+  </ion-list>
+
+</ion-content>

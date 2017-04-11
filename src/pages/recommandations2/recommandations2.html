@@ -1,0 +1,71 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mes dossiers</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+		
+        <ion-card *ngIf= 'nombre_reco_total == 0' text-center>
+			  <div class="title">
+				<h3 color="nosrezo">Aucune recommandation à traiter</h3>
+			  </div>		 
+        </ion-card> 
+		
+        <ion-card *ngFor="let rec of recommandations" style="background-color: rec.color">
+
+          <div *ngIf="rec.date_max >= 3">
+			    <ion-card-header *ngIf="rec.date_max >= 3" style="color:#00ED07">
+				 {{rec.nom}}
+				</ion-card-header>
+				<ion-card-content>
+				 {{rec.categorie}}<br/>
+                 {{rec.ville}}
+				</ion-card-content>
+                <ion-row>
+				<button ion-button icon-left clear (click)="traitementRecommandation(rec.id_recommandation)">Mettre à jour
+				</button>
+			  	</ion-row>
+          </div>
+
+          <div *ngIf="rec.date_max < 3 && rec.date_max > 0">
+			    <ion-card-header *ngIf="rec.date_max < 3 && rec.date_max > 0" style="color:#F98900">
+				 {{rec.nom}}
+				</ion-card-header>
+				<ion-card-content>
+				 {{rec.categorie}}<br/>
+                 {{rec.ville}}
+				</ion-card-content>
+                <ion-row>
+				<button ion-button icon-left clear (click)="traitementRecommandation(rec.id_recommandation)">Mettre à jour
+				</button>
+			  	</ion-row>
+          </div>
+
+          <div *ngIf="rec.date_max <= 0">
+			    <ion-card-header *ngIf="rec.date_max <= 0"  style="color:#F70000">
+				 <ion-icon name="ios-alert-outline"></ion-icon> {{rec.nom}}
+				</ion-card-header>
+				<ion-card-content>
+				 {{rec.categorie}}<br/>
+                 {{rec.ville}}
+				</ion-card-content>
+                <ion-row>
+				<button ion-button icon-left clear (click)="traitementRecommandation(rec.id_recommandation)">Mettre à jour
+				</button>
+			  	</ion-row>
+          </div>
+			
+        </ion-card>
+		
+    </ion-list> 
+
+</ion-content>

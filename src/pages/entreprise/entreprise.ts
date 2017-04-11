@@ -31,7 +31,7 @@ export class EntreprisePage {
   }
 
   getInfoEntreprise(){
-    let URL: string = 'http://'+this.API+'/Y_PROJECT/scripts/api_mobile/api_infos_affiliate.php?term='+this.idAffiliate;
+    let URL: string = this.API+'/api_return_info_affiliate.php?term='+this.idAffiliate;
 
     this.http.get(URL).subscribe((data) => {
       let response = JSON.parse(data['_body']);

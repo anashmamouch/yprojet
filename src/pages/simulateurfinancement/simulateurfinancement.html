@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><img alt="logo" height="60" src="../../assets/images/financement_toolbar.svg"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<ion-list margin-top>
+
+  <ion-list-header>
+   Estimer un futur financement :
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label stacked>Indiquez votre salaire mensuel net (€)</ion-label>
+    <ion-input [(ngModel)]="salaireNet" name="salaireNet" (change)="calculPret()" placeholder="4000"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Crédits mensuel en cours (€)</ion-label>
+    <ion-input [(ngModel)]="creditsMensuel" name="creditsMensuel" (change)="calculPret()" placeholder="0"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Durée du prêt souhaitée</ion-label>
+    <ion-select [(ngModel)]="dureePret" name="dureePret" (ionChange)="calculPret()" okText="Confirmer" cancelText="Annuler">
+      <ion-option value = "10">10 ans</ion-option>
+      <ion-option value = "15">15 ans</ion-option>
+      <ion-option value = "20">20 ans</ion-option>
+      <ion-option value = "25">25 ans</ion-option>
+    </ion-select>
+  </ion-item>
+
+</ion-list>
+
+<div *ngIf= "salaireNet && creditsMensuel && dureePret">
+    {{dateMaj}} <br/>
+    {{mensualite}}<br/>
+    {{montantPret}}<br/>
+    {{tauxPret}}<br/>
+</div>
+	
+</ion-content>

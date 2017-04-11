@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mise en relation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	
+	<div class="recap-relation">
+	<p color="nosrezo" ><span (click)="goToAdresse()">{{adresse}}</span> -> <span (click)="goToType()">{{type}}</span></p>
+	</div>
+	
+	<div class="title">
+	<h3 color="nosrezo">Sélectionnez le partenaire NosRezo :</h3>
+	</div>
+
+    <ion-list no-lines>
+		
+       <button ion-item *ngFor="let item of partenaireList" (click)="onPartenaireSelected(item)">
+	   {{item.partenaire}}
+       </button>
+		
+    </ion-list>
+
+        <label class="item item-input item-relation item-stacked-label" *ngIf="relationData.service == 50">
+            <div class="input-label">
+            <h4 class="red" translate="Assurez vous que votre contact acquéreur"></h4>
+                <p class="relation"> A validé son financement <br>
+                                     Accepte de mandater un chasseur immobilier<br>
+                                     Il n'a pas le temps de rechercher par lui-même<br>
+                                     Il n'a pas besoin de vendre son bien au préalable</p>
+            </div>
+
+        </label>
+        
+        <label class="item item-input item-relation item-stacked-label" *ngIf="relationData.service == 8">
+            <div class="input-label">
+              <h4 class="red">Assurez-vous que votre contact acquéreur:</h4>     
+                <p class="relation"> Est en recherche d'opportunités <br>
+                                      Souhaite assister à une presentation <br>
+                                        Est motivé</p>
+            </div>
+
+        </label>
+
+</ion-content>

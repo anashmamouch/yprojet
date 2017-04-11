@@ -3,25 +3,17 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { Http } from '@angular/http'; 
 
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { LoginPage } from '../login/login'; 
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-/*
-  Generated class for the Motpasseoublie page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-motpasseoublie',
   templateUrl: 'motpasseoublie.html'
 })
+
 export class MotpasseoubliePage {
 
-
-    user = {
-      "email": ''
-    }
-
+    email:any; 
     backgroundImage:any; 
 
     motpasseoublieForm: FormGroup;
@@ -39,27 +31,35 @@ export class MotpasseoubliePage {
 
     validateForm(){
       this.motpasseoublieForm = this.fb.group({
-        "email" : ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9-_]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$')])],
+        "email" : ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$')])],
       })
     }
 
     reinitialiserMotPasse(){
-      console.log(this.user);
-      let URL = "http://" + this.API + "/Y_PROJECT/scripts/api_mobile/api_forgot_password.php" ; 
+      let URL = this.API + 'api_forgot_password.php'; 
 
-      this.http.get(URL).subscribe((data) => {
-        let response = JSON.parse(data['_body']); 
-        console.log("MOT DE PASSE OUBLIE", response); 
+      let dataForgotPassword = JSON.stringify({email: this.email}); 
 
-        this.showAlert(" ",response['data'],  "OK"); 
+      this.http
+          .post(URL, dataForgotPassword)
+          .subscribe(data => {
 
-      }, (error) => {
-        console.log("::ERROR MOT DE PASSE OUBLIE::", error); 
-      }); 
+              let response = JSON.parse(data['_body']); 
+              console.log("FORGOT PASSWORD", response); 
+
+              if(response['data'] == '10'){
+                this.showAlert(" ", "un email vous a été envoyé pour reinitialiser votre mot de passe" , "OK"); 
+                this.navCtrl.setRoot(LoginPage); 
+              }else if (response['data'] == '0'){
+                this.showAlert(" ", "Email non inscrit", "OK"); 
+              }
+
+            }, (error) => {
+              console.log("::ERROR MOT DE PASSE OUBLIE::", error); 
+            }); 
 
     }
 
-      //fonction generique pour afficher les alertes
     showAlert(mytitle,mysubTitle,mybuttons) {
        let alert = this.alertController.create({
            title: mytitle,

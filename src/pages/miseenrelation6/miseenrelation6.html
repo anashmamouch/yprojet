@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mise en relation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+	
+	<div padding class="recap-relation">
+    <p color="nosrezo"><span (click)="goToAdresse()">{{adresse}}</span> -> <span (click)="goToType()">{{type}}</span>-><span (click)="goToPartenaire()">{{partenaire}}</span></p>
+	<div class="title">
+	<h3 color="nosrezo">Pour qui est la mise en relation ?</h3>
+	</div>	
+	</div>
+
+    <ion-list>
+
+        <!--begin form-->
+        <div [formGroup] = "miseEnRelationForm">
+
+            <!--Nom de votre contact-->
+            <ion-item>
+              <ion-label fixed>Nom</ion-label>
+              <ion-input type="text" formControlName="nom" [(ngModel)]="relationData.nomContact" name="nomContact" ></ion-input>
+            </ion-item>
+
+            <!--Prenom de votre contact-->
+            <ion-item>
+              <ion-label fixed>Prénom</ion-label>
+              <ion-input type="text" formControlName="prenom" [(ngModel)]="relationData.prenomContact" name="prenomContact" ></ion-input>
+            </ion-item>
+
+            <!--Email de votre contact-->
+            <ion-item>
+              <ion-label fixed>Email</ion-label>
+              <ion-input type="text" formControlName="email" [(ngModel)]="relationData.email" name="email"></ion-input>
+            </ion-item>
+
+            <!--Adresse de votre contact-->
+            <ion-item>
+              <ion-label fixed>Adresse</ion-label>
+              <ion-input type="text" formControlName="adresse" [(ngModel)]="relationData.adresse" name="adresse"></ion-input>
+            </ion-item>
+
+            <!--Mobile de votre contact-->
+            <ion-item>
+              <ion-label fixed>N° Mobile</ion-label>
+              <ion-input type="mobile" formControlName="mobile" [(ngModel)]="relationData.mobile" name="mobile"></ion-input>
+            </ion-item>
+
+            <!--Commentaire-->
+            <ion-item>
+			      <ion-label floating>Commentaire</ion-label>
+              <ion-textarea formControlName="commentaire" [(ngModel)]="relationData.commentaire" name="commentaire"></ion-textarea>
+            </ion-item>
+            
+        </div>
+
+    </ion-list>
+
+</ion-content>
+
+<ion-footer>
+
+  <button (click)="mettreEnRelation()" [disabled]="!miseEnRelationForm.valid" ion-button text-uppercase clear full color="fresh" class="action-button">Mettre en relation</button>
+
+</ion-footer>

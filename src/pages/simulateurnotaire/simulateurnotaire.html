@@ -1,0 +1,74 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><img alt="logo" height="60" src="../../assets/images/notaire_toolbar.svg"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	
+  <ion-list margin-top>
+	  
+	  <ion-list-header>
+	   Estimation des frais de notaire :
+	  </ion-list-header>
+
+      <ion-item>
+        <ion-label stacked>Montant de votre achat (€)</ion-label>
+        <ion-input [(ngModel)]="montantAchat" name="montantAchat" (change)="calculFraisNotaire()" placeholder="300000"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Département</ion-label>
+        <ion-select [(ngModel)]="departement" name="departement" (ionChange)="calculFraisNotaire()" okText="Confirmer" cancelText="Annuler">
+          <ion-option [value]="dep.taux_vote" *ngFor="let dep of departements"> {{dep.nom_departement}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type de bien</ion-label>
+        <ion-select [(ngModel)]="typeBien" name="typeBien" (ionChange)="calculFraisNotaire()" okText="Confirmer" cancelText="Annuler">
+          <ion-option value = "1">Immobilier ancien</ion-option>
+          <ion-option value = "2">Immobilier neuf</ion-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <span *ngIf="montantAchat >= 10000 && typeBien > 0">
+
+    <ion-list no-lines no-margin>
+      <ion-item>
+        Emoluments de notaire : <span>{{this.notaireData.emoluments_de_notaire}} €</span>
+      </ion-item>
+
+      <ion-item>
+        Droits de mutation : <span>{{this.notaireData.droits_de_mutation}} €</span>
+      </ion-item>
+
+      <ion-item>
+        Sécurité immobilière : <span>{{this.notaireData.contribution_de_securite_immobiliere}} %</span>
+      </ion-item>
+
+      <ion-item>
+         Emoluments de frais divers : <span>{{this.notaireData.emoluments_de_formalites + this.notaireData.frais_divers}} €</span>
+      </ion-item>
+		
+    </ion-list>
+	  
+	  <div padding text-center class="result">
+	  <ion-card>
+		<ion-card-header>
+		Montant Total :
+		</ion-card-header>
+		<ion-card-content>
+		{{this.notaireData.total}} € / {{this.notaireData.pourcentage_total}} %  
+		</ion-card-content>
+	  </ion-card>
+	  </div>
+	  
+
+  </span>
+
+</ion-content>

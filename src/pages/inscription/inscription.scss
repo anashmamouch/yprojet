@@ -1,19 +1,73 @@
 page-inscription {
 
-	.inscription .item-ios {
- 		padding-left: 15px;
- 		padding-right: 15px;
+ion-content {
+	background-color: #f6f6f6 !important;
+		p {
+		font-family: 'catamaran-medium-webfont';
+		color: #363636;
+		font-size: 1.2rem;
+		}
+	}
+	
+	ion-list {
+	font-family: 'catamaran-medium-webfont';
+	font-size: 1.4rem;
+		
+		.list-header-ios, .list-header-md {
+		font-size: 1.3rem;
+		background-color: transparent;
+		border-top: none;
+		margin-bottom: 0;
+		}
+		
+		ion-icon {
+		margin-right: 5px;
+		font-size: 1.6rem;
+		color: #5c5c5c;
+		}
+	
+		ion-label {
+		color: #575757;	
+		}
+		
+		ion-select {
+		max-width: 100%;
+		}
+	
+		.select-ios .select-icon, .select-md .select-icon {
+		width: 100px;
+		left: 80px;
+		}
+		
+		.select-ios .select-icon .select-icon-inner, .select-md .select-icon .select-icon-inner {
+		left: 0px;	
+		}
+		
+		ion-input {
+		font-family: 'catamaran-medium-webfont';
+		}
+		
+	}
+	
+	.action-button {
+	font-family: 'catamaran-bold-webfont';
+	font-size: 1.3rem;
+	letter-spacing: 0.1rem;
+	height: 3em;
+	}
+	
+	ion-footer {
+	background: linear-gradient(to bottom, rgba(86,216,0,1) 0%,rgba(0,209,59,1) 100%) !important;
+	font-family: 'catamaran-bold-webfont';
+	font-size: 1.5rem;	
+	letter-spacing: 0.1rem;
+	}
+	
+	@media (max-width: 360px) {
+			.item-ios, .item-md {
+			font-size: 1.2rem;
+			}
 	}
 
-}
 
-.searchbar-ios {
- padding-left: 15px !important;
- padding-right: 15px !important;
- background: none;
-	}
-
-.searchbar-ios .searchbar-input {
- text-transform: uppercase;
- font-size: 1.1rem;
 }

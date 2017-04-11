@@ -8,13 +8,6 @@ import { Stats3Page } from '../stats3/stats3';
 import { Stats4Page } from '../stats4/stats4'; 
 import { Stats5Page } from '../stats5/stats5'; 
 
-/*
-  Generated class for the Statistiques page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
-
 @Component({
   selector: 'page-statistiques',
   templateUrl: 'statistiques.html'

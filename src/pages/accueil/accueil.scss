@@ -1,127 +1,327 @@
 page-accueil {
 	
-	.toolbar-background-ios, .toolbar-background-md {
+	font-family: 'catamaran-medium-webfont';
+	
+	.toolbar-ios, toolbar-md {
 	min-height: 60px !important;
-	background-color: #6600BA;
-	border-bottom: 1px solid #6300C6;
 	}
-	.list-ios .item-block .item-inner, .list-md .item-block .item-inner {
+		
+	.toolbar-background-ios, .toolbar-background-md {
+	background-color: transparent;
+	border-bottom: none !important;	
+	}
+	
+	ion-content {
+	background: #FAFAFA !important;
+	}
+
+	.scroll-tabs .scroll-container {
+	font-family: 'catamaran-medium-webfont';
+	height: 60px;
 	border-bottom: none;
-	padding: 0;
+	background-color: #fff;
 	}
 	
-	
-	.accueil-background {
-	background: linear-gradient(to bottom, rgba(99,0,198,1) 30%,rgba(206,0,151,1) 74%,rgba(255,0,106,1) 99%);
+	ion-scroll .scroll-content {
+	top : 10px;
 	}
 	
-	.stats-info {
-		span {
-		font-family: 'lato-light-webfont';
-		font-size: 2.5rem;
-		text-transform: none;
-		letter-spacing: 0.1rem;
-		background: linear-gradient(to right, rgba(230,0,126,1) 0%,rgba(247,0,247,1) 100%);
-  		-webkit-background-clip: text;
-  		-webkit-text-fill-color: transparent;
-		}
-		p {
-		font-family: 'lato-bold-webfont';
-		font-size: 1.2rem !important;
-		color: #fff;
-		}
-	}
-	.bundle-info {
-	background: transparent;
-	border-bottom: none !important;
-		h5 {
-		font-family: 'lato-regular-webfont';
-		font-size: 1.3rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1rem;
-		}
-		p {
-		font-family: 'lato-bold-webfont';
-		font-size: 1.4rem;
-		text-transform: none;
-		}
-	}
-	h4 {
-	font-family: 'lato-regular-webfont';
-	font-size: 1.6rem;
+	.scroll-tabs .scroll-container .section .tab9-button {
+	text-transform: uppercase !important;	
+	color: #4f7abd;
+	font-size: 1.4rem;
 	letter-spacing: 0.1rem;
-	text-transform: uppercase;
-	margin-top: 30px;
-	margin-bottom: 20px;
 	}
 	
-	
-	.dashboard-card {
-	background: linear-gradient(to bottom, rgba(152,0,255,1) 0%,rgba(99,0,198,1) 100%);
-		
-		img {
-		width: 100%;
-		}
-
-		.card-title {
-		color: #fff;
-		font-family: 'lato-bold-webfont';
-		font-size: 1.3em;
-		letter-spacing: 0.05rem;
-		}
-		p {
-		color: #fff;
-		font-family: 'lato-regular-webfont';
-		font-size: 1.2em;
-		letter-spacing: 0.05rem;	
-		}
-		button {
-		font-family: 'lato-bold-webfont';
-		font-size: 1.1em;	
-		}
-		
+	.scroll-tabs .scroll-container .section .tab9-button.selected {
+	color: #32db64;
+    border-bottom: 1px solid #32db64;
 	}
 	
-	.card-background-page {
-		
-	  .item-block .item-inner {
-	  border-bottom: none;
-	  padding: 0;
-	  }
-	  
-	  .label-ios, label-md {
-	  margin: 0;
-	  }
-		
-	  ion-item {
-	  background: transparent;
-	  }
-
-	  ion-card {
-		position: relative;
-		text-align: center;
-		box-shadow: none;
+	.SKactiveSegment {
+    color:rgba(138, 34, 40, 0.98) !important;
+    }
+	
+    .indicatorSegment {
+        -webkit-transition: 0.3s all;
+        -moz-transition:  0.3s all;
+        -o-transition:  0.3s all;
+        transition:  0.3s all;
+        transform-origin: top 0 left 0;
+        width:50%;
+        height:2px;
+        background-color:rgba(138, 34, 40, 0.98) !important;;
+    }
+	
+	
+	.affilies {
+	
+		.card-ios, .card-md {
+		background: linear-gradient(135deg, rgba(50,183,255,1) 0%,rgba(0,91,249,1) 100%);
 		border-radius: 5px;
-	  }
-
-	  .card-title {
-		position: absolute;
-		top: 40%;
-		font-family: 'lato-bold-webfont';
-		font-size: 1.8em;
-		letter-spacing: 0.05rem;
-		width: 100%;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+		color:#fff;
+			
+			h1 {
+			font-size: 4rem;
+			margin-top: -1rem;
+			color: #fff;
+				
+				ion-icon {
+				font-size: 3rem;
+				opacity: 0.7;
+				}
+			}
+			
+		}
+		
+		ion-card-header {
+		text-transform: uppercase;
+		font-size: 1.2rem;
 		color: #fff;
-	  }
-
-	  .card-subtitle {
-		font-size: 1.4em;
-		position: absolute;
-		top: 70%;
-		width: 100%;
-		color: #fff;
-	  }
-
+		opacity: 0.5;
+		font-family: 'catamaran-medium-webfont';
+		padding: 15px;
+		letter-spacing: 0.2rem;
+		}
+		
+		.list-header-ios, .list-header-md {
+		font-size: 1.3rem;
+		background-color: transparent;
+		border-top: none;
+		margin-bottom: 0;	
+		}
+		
+		ion-list-header {
+			
+			ion-icon {
+			font-size: 1.6rem;	
+			}
+		}
+		
+		.item-ios, .item-md {
+		color: #303030 !important;
+			
+			p {
+			font-size: 1.7rem;
+			font-family: 'catamaran-medium-webfont';
+			color: #005BF9;
+			}
+		}
+		
+		.item-ios [item-right], .item-md [item-right] {
+		margin: 5px 10px;
+		}
+		
+		
 	}
+	
+	.recommandations {
+	
+		.card-ios, .card-md {
+		background: linear-gradient(135deg, rgba(0,127,255,1) 0%,rgba(0,255,255,1) 100%);
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+		color:#fff;
+			
+			h1 {
+			font-size: 4rem;
+			margin-top: -1rem;
+			color: #fff;
+				
+				ion-icon {
+				font-size: 3rem;
+				opacity: 0.7;
+				}
+			}
+			
+		}
+		
+		ion-card-header {
+		text-transform: uppercase;
+		font-size: 1.2rem;
+		color: #fff;
+		opacity: 0.5;
+		font-family: 'catamaran-medium-webfont';
+		padding: 15px;
+		letter-spacing: 0.2rem;
+		}
+		
+		.list-header-ios, .list-header-md {
+		font-size: 1.3rem;
+		background-color: transparent;
+		border-top: none;
+		margin-bottom: 0;	
+		}
+		
+		ion-list-header {
+			
+			ion-icon {
+			font-size: 1.6rem;	
+			}
+		}
+		
+		.item-ios, .item-md {
+		color: #303030 !important;
+			
+			p {
+			font-size: 1.7rem;
+			font-family: 'catamaran-medium-webfont';
+			color: #005BF9;
+			}
+		}
+		
+		.item-ios [item-right], .item-md [item-right] {
+		margin: 5px 10px;
+		}
+		
+		
+	}
+	
+	.remuneration {
+	
+		.card-ios, .card-md {
+		background: linear-gradient(135deg, rgba(0,255,144,1) 0%,rgba(0,173,204,1) 100%);
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+		color:#fff;
+			
+			h1 {
+			font-size: 4rem;
+			margin-top: -1rem;
+			color: #fff;
+				
+				ion-icon {
+				font-size: 3rem;
+				opacity: 0.7;
+				}
+			}
+			
+		}
+		
+		ion-card-header {
+		text-transform: uppercase;
+		font-size: 1.2rem;
+		color: #fff;
+		opacity: 1;
+		font-family: 'catamaran-medium-webfont';
+		padding: 15px;
+		letter-spacing: 0.2rem;
+		}
+		
+		.list-header-ios, .list-header-md {
+		font-size: 1.3rem;
+		background-color: transparent;
+		border-top: none;
+		margin-bottom: 0;	
+		}
+		
+		ion-list-header {
+			
+			ion-icon {
+			font-size: 1.6rem;	
+			}
+		}
+		
+		.item-ios, .item-md {
+		color: #303030 !important;
+			
+			p {
+			font-size: 1.7rem;
+			font-family: 'catamaran-medium-webfont';
+			color: #005BF9;
+			}
+		}
+		
+		.item-ios [item-right], .item-md [item-right] {
+		margin: 5px 10px;
+		}
+		
+		
+	}
+	
+	.outils {
+		
+		.card-ios, .card-md {
+		border-radius: 5px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+		color:#fff;
+		} 
+		
+	}
+
+	/*youtube*/
+//     margin-top: 56.25vw;
+    
+// 	scroll-content {
+//         margin-top: 5px !important;
+//     }
+//     ion-card.adv-map p {
+//         font-size: 0.7em !important;
+//     }
+
+//     button[fab].fab-map {
+//         top: calc(100% - 35px);
+//         z-index: 50;
+//     }
+
+//     .item-bold {
+//     font-weight: bold;
+//     }
+
+//     ion-content.cards-bg {
+//         background-color: #f4f4f7;
+//     }
+
+//     .item-text-wrap { /* negate the nowrap CSS from .ionic .item */
+//         overflow: visible;
+//         text-overflow: initial;
+//         white-space: initial;
+//     }
+// /*
+// 	ion-nav > ion-page > ion-header > .youtube-player-header.toolbar.statusbar-padding:first-child {
+// 		padding-top: 0px;
+// 		height: initial !important;
+// 	}
+// */
+// 	.sixteen-nine {
+// 		position: relative;
+// 	}
+// 	.sixteen-nine:before {
+// 		display: block;
+// 		content: "";
+// 		width: 100%;
+// 		padding-top: 56.25%;
+// 	}
+// 	.sixteen-nine > .content {
+// 		position: absolute;
+// 		top: -16.5%;
+// 		left: 0;
+// 		right: 0;
+// 		bottom: 0;
+// 	}
+
+// 	.embed-responsive {
+// 		position: relative;
+// 		display: block;
+// 		height: 0;
+// 		padding: 0;
+// 		overflow: hidden;
+// 	}
+
+// 	.embed-responsive.embed-responsive-16by9 {
+// 		padding-bottom: 56.25%;
+// 	}
+
+// 	.embed-responsive-item {
+// 		position: absolute;
+// 		top: 0;
+// 		bottom: 0;
+// 		left: 0;
+// 		width: 100%;
+// 		height: 100%;
+// 		border: 0;
+// 	}
+	/*youtube*/
 	
 }

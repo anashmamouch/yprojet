@@ -1,0 +1,178 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><img alt="logo" height="60" src="../../assets/images/gains_toolbar.svg"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list margin-top>
+	  
+	<ion-list-header>
+	   Simulation de gains avec NosRezo :
+	 </ion-list-header>
+	  
+    <ion-item>
+      <ion-label>Vos affiliés se constitue un réseau de </ion-label>
+      <ion-select [(ngModel)]="nombreAffilies" name="nombreAffilies"  (ionChange)="calculGain()">
+        <ion-option value="0">0 affilié</ion-option>
+        <ion-option value="1">1 affilié</ion-option>
+        <ion-option value="2">2 affiliés</ion-option>
+        <ion-option value="3">3 affiliés</ion-option>
+        <ion-option value="4">4 affiliés</ion-option>
+        <ion-option value="5">5 affiliés</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Vos affiliés réalise 1 recommandation </ion-label>
+      <ion-select [(ngModel)]="nombreValeur" name="nombreValeur" (ionChange)="calculGain()">
+        <ion-option value="600">Vente appartement - Valeur 200 000 €</ion-option>
+        <ion-option value="1200">Vente appartement - Valeur 400 000 €</ion-option>
+        <ion-option value="1800">Vente appartement - Valeur 600 000 €</ion-option>
+        <ion-option value="417">Travaux rénovation - Devis 10 000 €</ion-option>
+        <ion-option value="833">Travaux rénovation - Devis 20 000 €</ion-option>
+        <ion-option value="1250">Travaux rénovation - Devis 30 000 €</ion-option>
+        <ion-option value="400">Financement de prêt - Devis 200 000 €</ion-option>
+        <ion-option value="601">Financement de prêt - Devis 300 000 €</ion-option>
+        <ion-option value="625">Financement de prêt - Devis 400 000 €</ion-option>
+        <ion-option value="501">Recrutement immobilier - France</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Affiliés Équipe NosRezo actifs </ion-label>
+      <ion-select [(ngModel)]="nombrePercent" name="nombrePercent" (ionChange)="calculGain()">
+        <ion-option value="20"> 20 % de votre développement est actif </ion-option>
+        <ion-option value="50"> 50 % de votre développement est actif</ion-option>
+        <ion-option value="100"> 100 % de votre développement est actif</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <span *ngIf= "nombreAffilies && nombreValeur && nombrePercent">
+		
+		<div padding class="result">
+        <!-- Header -->
+        <ion-row>
+          <ion-col>
+          </ion-col>
+          <ion-col>
+            <h5>Affiliés</h5>
+          </ion-col>
+          <ion-col>
+            <h5>Gain brut</h5>
+          </ion-col>
+        </ion-row>
+
+        <!-- MOI -->
+        <ion-row>
+          <ion-col>
+           <ion-icon name="ios-contact-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            {{gainData.nb_affilie}}
+          </ion-col>
+          <ion-col>
+            {{gainData.mon_gain}} €
+          </ion-col>
+        </ion-row>
+
+        <!-- NIVEAU 1 -->
+        <ion-row>
+          <ion-col>
+          NIVEAU 1
+          </ion-col>
+          <ion-col>
+            {{gainData.nb_affilie_niv1}} 
+          </ion-col>
+          <ion-col>
+            {{gainData.gain_niv1}} €
+          </ion-col>
+        </ion-row>
+
+        <!-- NIVEAU 2 -->
+        <ion-row>
+          <ion-col>
+            NIVEAU 2
+          </ion-col>
+          <ion-col>
+            {{gainData.nb_affilie_niv2}}
+          </ion-col>
+          <ion-col>
+            {{gainData.gain_niv2}} €
+          </ion-col>
+        </ion-row>
+
+         <!-- NIVEAU 3 -->
+        <ion-row>
+          <ion-col>
+           NIVEAU 3
+          </ion-col>
+          <ion-col>
+            {{gainData.nb_affilie_niv3}} 
+          </ion-col>
+          <ion-col>
+            {{gainData.gain_niv3}} €
+          </ion-col>
+        </ion-row>
+
+          <!-- NIVEAU 4 -->
+        <ion-row>
+          <ion-col>
+            NIVEAU 4
+          </ion-col>
+          <ion-col>
+            {{gainData.nb_affilie_niv4}} 
+          </ion-col>
+          <ion-col>
+            {{gainData.gain_niv4}} €
+          </ion-col>
+        </ion-row>
+
+        <!-- NIVEAU 5 -->
+        <ion-row>
+          <ion-col>
+           NIVEAU 5
+          </ion-col>
+          <ion-col>
+            {{gainData.nb_affilie_niv5}}
+          </ion-col>
+          <ion-col>
+            {{gainData.gain_niv5}} €
+          </ion-col>
+        </ion-row>
+
+        <!-- NIVEAU 6 -->
+        <ion-row>
+          <ion-col>
+          NIVEAU 6
+          </ion-col>
+          <ion-col>
+            {{gainData.nb_affilie_niv6}} 
+          </ion-col>
+          <ion-col>
+            {{gainData.gain_niv6}} €
+          </ion-col>
+        </ion-row>
+			
+	  <div text-center>
+	  <ion-card>
+		<ion-card-header>
+		Total : {{gainData.nb_affilie_total}} affiliés
+		</ion-card-header>
+		<ion-card-content>
+		Gains : {{gainData.gain_total}} €
+		</ion-card-content>
+	  </ion-card>
+	  </div>
+			
+		</div>
+		
+    </span>
+	  
+  </ion-list>
+
+</ion-content>

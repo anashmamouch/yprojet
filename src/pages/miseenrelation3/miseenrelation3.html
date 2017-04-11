@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Mise en relation</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	
+  <div class="title">
+   <h3 color="nosrezo">Où se situe le besoin ?</h3>
+  </div>	
+  
+  <div class="form-horizontal" >
+      <!--Autocomplete Code Postal - Ville-->
+      <input class="input-localisation"  ng2-auto-complete
+              [(ngModel)]="model"
+              placeholder="75015 Paris"
+              [source]="geoCode" 
+              list-formatter="label"
+              min-chars="1" 
+              blank-option-text=""
+              no-match-found-text="Pas de résultats trouvé"
+              loading-text="Chargement..."
+              max-num-list="6"
+              (valueChanged)="onChangeVille($event)"/>
+    </div>
+	
+</ion-content>

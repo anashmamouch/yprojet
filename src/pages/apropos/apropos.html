@@ -1,44 +1,64 @@
-<!--
-  Generated template for the About page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+
   <ion-navbar>
-    <button ion-button menuToggle>
+
+	  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>À Propos</ion-title>
+
+    <ion-title>À propos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content>
-<ion-list>
-	
-	<ion-list-header>
-    En savoir plus
-  	</ion-list-header>
-	
-	<div class="custom-nav" no-margin>
-	<button ion-item (click)="openFAQ()">FAQ</button>
-	</div>
-    <div class="custom-nav"no-margin>
-	<button ion-item (click)="openCGU()">CGU</button>
-	</div>
-    <div class="custom-nav" no-margin>
-	<button ion-item (click)="openContact()">Nous Contacter</button>
-	</div>
-    <div class="custom-nav" no-margin>
-	<button ion-item (click)="openFacebook()">Likez notre page facebook</button>
-	</div>
-  
-    
-    
-    
-    
 
-</ion-list>
+  <ion-list>
+
+    <button ion-item (click)="conceptNosRezo()"> Le concept NosRezo </button>
+
+    <ion-item>
+      <a href="{{listInfo.lien_webinar}}"> Prochaines présentations en ligne </a>
+    </ion-item>
+
+    <ion-item>
+      <a href="mailto:?subject=Presentation 
+                NosRezo du lundi&body=Bonjour, %0D %0D 
+                Je te conseille d'assister au webinar 
+                du lundi, 20 min qui changent tout 
+                : {{listInfo.lien_webinar}} %0D 
+                %0D{{listInfo.first_name_owner}} 
+                %0D{{listInfo.phone_number}}">Calendrier des présentations par mail</a>
+    </ion-item>
+
+    <ion-item>
+      <a href="tel:{{listInfo.telephone_service_qualite}}">Contacter le service qualité par téléphone</a>
+    </ion-item>
+
+    <ion-item>
+       <a href="mailto:contact@nosrezo.com?subject=Question NosRezo&body=Salut la team NosRezo, 
+                %0D %0D %0D %0D{{listInfo.first_name_owner}} 
+                %0D{{listInfo.phone_number}}">Contacter le service qualité par mail</a>
+    </ion-item>
+
+    <button ion-item (click)="conditionsGeneralesUtilisations()"> Conditions Générales d'Utilisation </button>
+    <button ion-item (click)="conditionsGeneralesInscription()"> Conditions Générales d'Inscription </button>
+    <button ion-item (click)="codeBonSensNosRezo()"> Le code du bon sens NosRezo </button>
+    <button ion-item (click)="likeFacebookPage()"> Likez notre page Facebook </button>
+    <button ion-item (click)="avisAppStore()"> Laissez un avis sur l'App Store </button>
+
+    <!--
+
+      <ion-item>
+        <a href="https://www.facebook.com/Nosrezo-331807033627841/"> Likez notre page Facebook</a> 
+      </ion-item>
+
+      <ion-item>
+        <a href="https://itunes.apple.com/fr/app/nosrezo-france/id1054618680?mt=8">Laissez un avis sur l'App Store</a>
+      </ion-item>
+    
+    -->
+
+  </ion-list>
+
 </ion-content>

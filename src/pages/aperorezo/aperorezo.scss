@@ -1,3 +1,41 @@
 page-aperorezo {
+	
+	ion-content {
+	background: #FAFAFA !important;
+		
+		.title {
+		font-family: 'catamaran-bold-webfont';
+		letter-spacing: 0.1rem;
+		margin-top: 2rem;
+		margin-bottom: 4rem;
+			
+			h3 {
+			font-size: 2.1rem;	
+			}
+		
+		}
+		
+	.card-ios, .card-md {
+	background: linear-gradient(to bottom, rgba(0,180,252,0.8) 0%,rgba(0,102,253,0.2) 100%);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	color:#fff;
+	font-family: 'catamaran-medium-webfont';
+	font-size: 1.3rem;
+	border-radius: 5px;
+	}
+	
+	.card-ios .item + .card-content-ios {
+	padding-top: 10px;		
+	}
+		
+	.item-ios, item-md  {
+	background: transparent;		
+	}
+		
+	ion-col {
+	padding: 10px;
+	}
+	
+	}
 
 }

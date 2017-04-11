@@ -1,40 +1,83 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-import { ContactPage } from '../contact/contact';
-import { FaqPage } from '../faq/faq';
-import { CguPage } from '../cgu/cgu';
-/*
-  Generated class for the About page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+import { CguPage } from '../cgu/cgu'; 
+import { CgiPage } from '../cgi/cgi'; 
+import { CodebonsensPage } from '../codebonsens/codebonsens';  
+import { ConceptPage } from '../concept/concept'; 
+
+
 @Component({
   selector: 'page-apropos',
   templateUrl: 'apropos.html'
 })
+
 export class AproposPage {
 
-  constructor(public navCtrl: NavController) {
-    console.log("Hello Apropos Page");
+  listInfo:any; 
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform:Platform) {
+
+    this.listInfo = {  }; 
+
+    this.listInfo.nb_affiliate_level_1 = localStorage.getItem('nb_affiliate_level_1'); 
+    this.listInfo.nb_affiliate_level_2 = localStorage.getItem('nb_affiliate_level_2'); 
+    this.listInfo.lien_webinar = localStorage.getItem('lien_webinar'); 
+    this.listInfo.telephone_service_qualite = localStorage.getItem('telephone_service_qualite'); 
+    this.listInfo.first_name_owner = localStorage.getItem('first_name'); 
+    this.listInfo.phone_number = localStorage.getItem('phone_number');
+
+    console.log('###############LIST INFO###############', this.listInfo); 
+
+    this.platform.ready().then(() =>{
+      //cordova inappbrowser
+    })
   }
 
-  openFAQ(){
-  this.navCtrl.push(FaqPage);
+  conceptNosRezo(){
+    console.log('concept nosrezo'); 
+    this.navCtrl.push(ConceptPage); 
   }
 
-  openContact(){
-    this.navCtrl.push(ContactPage);
+  presentationsEnligne(){
+    console.log('presentations en ligne'); 
   }
 
-  openCGU(){
-    this.navCtrl.push(CguPage); 
+  calendrierPresentations(){
+    console.log('calendrier presentations'); 
   }
 
-  openFacebook(){
-    window.open('http://www.amazon.com', '_system', 'location=yes');
-    return false;
+  serviceQualiteTelephone(){
+    console.log('service qualite telephone'); 
+  }
+
+  serviceQualiteMail(){
+    console.log('service qualite mail'); 
+  }
+
+  conditionsGeneralesUtilisations(){
+     console.log('conditions generales utilisations'); 
+     this.navCtrl.push(CguPage); 
+  }
+
+  conditionsGeneralesInscription(){
+     console.log('conditions generales inscription');
+     this.navCtrl.push(CgiPage);  
+  }
+
+  codeBonSensNosRezo(){
+     console.log('code bon sens nosrezo'); 
+     this.navCtrl.push(CodebonsensPage);
+  }
+
+  likeFacebookPage(){
+
+  }
+
+  avisAppStore(){
+
   }
 
 

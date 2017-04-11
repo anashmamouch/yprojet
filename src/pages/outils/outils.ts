@@ -2,17 +2,11 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 //pages
-import { StatistiquesPage } from '../statistiques/statistiques'; 
-import { LocalisationPage } from '../localisation/localisation'; 
-import { PlanningPage } from '../planning/planning'; 
-import { TinderPage } from '../tinder/tinder'; 
+import { SimulateurfinancementPage } from '../simulateurfinancement/simulateurfinancement'; 
+import { SimulateurnotairePage } from '../simulateurnotaire/simulateurnotaire';
+import { SimulateurgainsPage } from '../simulateurgains/simulateurgains'; 
+import { SimulateurrevenuPage } from '../simulateurrevenu/simulateurrevenu'; 
 
-/*
-  Generated class for the Outils page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-outils',
   templateUrl: 'outils.html'
@@ -23,20 +17,20 @@ export class OutilsPage {
     console.log('Hello outils page'); 
   }
 
-  goToStatistiques(){ 
-    this.navCtrl.push(StatistiquesPage); 
+  goFinancement(){ 
+    this.navCtrl.push(SimulateurfinancementPage); 
   }
 
-  goToLocalisation(){
-    this.navCtrl.push(LocalisationPage); 
+  goNotaire(){
+    this.navCtrl.push(SimulateurnotairePage); 
   }
 
-  goToPlanning(){
-    this.navCtrl.push(PlanningPage); 
+  goGains(){
+    this.navCtrl.push(SimulateurgainsPage); 
   }
 
-  goToTinder(){
-    this.navCtrl.push(TinderPage);
+  goRevenu(){
+    this.navCtrl.push(SimulateurrevenuPage);
   }
 
 }

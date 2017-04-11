@@ -1,77 +1,100 @@
-page-login{
+page-login {
+	
+	font-family: 'catamaran-medium-webfont';
+	
+	.home-background {
+	 background: url(../../assets/images/background_login.png) no-repeat center center fixed;
+	 background-size: cover;
+	}
+	
+	.logo {
+		img {
+		max-width: 100%;
+		}
+	margin-top: 2.5rem;
+	margin-bottom: 2rem;
+	}
+	
 
+	.login {
+	margin-top: 3rem;
+	margin-bottom: 8rem;
+	padding: 5px 20px;
+		
+		.list-ios, list-md {
+		margin:0;	
+		}
+		
+		.list-ios .item-block .item-inner, .list-md .item-block .item-inner {
+		border-bottom: none;
+		}
+		
+		.item-ios, .item-md {
+		background: rgba(255,255,255,0.2) !important;
+		border-radius: 50px;
+		border: 0.5px solid #3263ab !important;
+		margin-top: 1rem;
+		font-family: 'catamaran-medium-webfont';
+		font-size: 1.6rem;
+		color: #fff;
+		height: 3em;
+		}
+		
+		.login-button {
+		font-family: 'catamaran-bold-webfont';
+		font-size: 1.5rem;
+		letter-spacing: 0.1rem;
+		height: 3.5em;
+		margin-top: 1rem;
+		}
+			
+	}
+	
+	.signup {
+	font-size: 1.5rem;	
+	padding: 5px 20px;
+	
+		a {
+		color: #4f7abd;
+		text-decoration: underline;
+		font-family: 'catamaran-bold-webfont';
+		}
+		
+		.signup-button { 
+		font-family: 'catamaran-medium-webfont';
+		font-size: 1.4rem;
+		letter-spacing: 0.1rem;
+		height: 3em;
+		}
 
+		.facebook-button {
+		font-family: 'catamaran-medium-webfont';
+		font-size: 1.4rem;
+		letter-spacing: 0.1rem;
+		height: 3em;
+		}
 
-     .stack {
-        position: relative;
-        height: 100%;
+		
+		
+	}
+	
+	.languages {
+		
+		img {
+		max-width: 80%; 	
+		}
+	}
 
-        .user-photo {
-            background-image: url("assets/images/bg_home.jpg") ; 
-
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: auto 100%;
-        background-position: center;
-        }
-     }
-}
-.button-center{
- margin: 0 auto;
- text-align: center;
-}
-.login-title {
- font-family: 'lato-light-webfont';
- font-size: 3rem;
- letter-spacing: 0;
- margin-top: 0;
-}
-.logo-home {
- max-width: 100%;
- margin-top: 2rem;
-}
-
-.home-background {
- background-repeat: no-repeat;
- background-size: cover;
- background-position: center center;
-}
-
-.login-list { 
- margin-top: 1rem;
-}
-
-.login-item  {
- background: rgba(255,255,255,0.3);
- border: none !important;
- border-radius: 5px;
- margin-bottom: 1rem;
- padding: 0 !important;
-}
-.login-item .item-inner {
- border-bottom: none !important;
- padding: 0;
-}
-.login-item input {
- color: #fff;
- font-size: 1.2rem;
- font-family: 'lato-regular-webfont';
- letter-spacing: 0.1rem;
-}
-.login-button {
- font-family: 'lato-bold-webfont';
- font-size: 1.5rem;
-}
-.link-button {
- font-family: 'lato-bold-webfont';
- font-size: 1.2rem;
-}
-.footer-button {
- font-family: 'lato-regular-webfont';
- font-size: 1.4rem;
- text-transform: uppercase;
- letter-spacing: 0.1rem;
+	@media (max-width: 360px) {
+			.logo {
+			margin-top: 1rem;
+			}
+			.login {
+			margin-bottom: 0;
+			}
+			.signup {
+			margin-top: 0;
+			}
+	}
+	
 }

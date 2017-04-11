@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mise en relation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+     
+	<div class="recap-relation" padding>
+	<p color="nosrezo" (click)="goBack()"> <span >{{adresse}}</span>.</p>
+	
+	<div class="title">
+	<h3 color="nosrezo">De quel professionnel<br>avez-vous besoin ?</h3>
+	</div>
+		
+	</div>
+    
+    <ion-list no-lines>
+      <ion-item-sliding *ngFor="let type of typeList">
+
+          <button ion-item  (click)="onTypeSelected(type)">
+            {{type.s_sub_category}}
+          </button>
+
+          <ion-item-options side="left">
+              <button ion-button (click)="info(type)">
+			  <ion-icon name="information"></ion-icon>
+			  En savoir plus
+			  </button>
+          </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
+   
+
+</ion-content>

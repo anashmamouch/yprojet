@@ -2,28 +2,49 @@
 
 </ion-header>
 
-<ion-content padding text-center class="home-background" [ngStyle]="{ 'background-image': 'url(' + backgroundImage + ')' } " >
+<ion-content padding text-center class="home-background">
 
- <img class="logo-home" src="../../assets/images/logo_home.png">
-
+  <div class="logo">
+  <img src="../../assets/images/logo_login.svg">
+  </div>
+  <h5 color="white">L'application qui vous rémunère<br> pour rendre service</h5>
+  <div class="login">
   <div [formGroup]="loginForm">
-    <ion-list class="login-list">
-
+    <ion-list>
          <!--Username Login-->
-         <ion-item class="login-item bold">
-            <ion-input text-center type="text" formControlName = "username" [(ngModel)]="user.username" name="username" placeholder = "Email"></ion-input>
+         <ion-item>
+			<ion-icon name="ios-contact-outline" item-left color="white"></ion-icon>
+            <ion-input type="text" formControlName = "username" [(ngModel)]="user.username" name="username" placeholder="Identifiant"></ion-input>
          </ion-item>
-
          <!--Password Login-->
-         <ion-item class="login-item bold">
-            <ion-input text-center type = "password" formControlName = "password" [(ngModel)]="user.password" name="password" placeholder = "Mot de passe"></ion-input>
+         <ion-item>
+			<ion-icon name="ios-lock-outline" item-left color="white"></ion-icon>
+            <ion-input type = "password" formControlName = "password" [(ngModel)]="user.password" name="password" placeholder="Mot de passe"></ion-input>
+			<button (click) = "forgotPassword()" ion-button icon-left clear item-right color="white">
+			Oublié ?
+			</button>
          </ion-item>
-
+		<!--Connexion Button-->
+ 		<button class="login-button" (click) = "login()" ion-button [disabled]="!loginForm.valid" text-uppercase margin-top block outline clear color="white">{{'login' | translate}}</button>
      </ion-list>
    </div>
-  <button (click) = "login()" ion-button [disabled]="!loginForm.valid" block outline round color="fresh" class="login-button">Login</button>
-  <button (click) = "forgotPassword()" ion-button color="light"  clear class="link-button">Mot de passe oublié ?</button>
-	<button (click) = "facebookConnect()" ion-button round block color="primary" margin-top>S'inscrire avec Facebook</button>
-	<button (click) = "register()" ion-button color="light" clear class="link-button">Vous n'avez pas de compte Facebook</button>
+  </div>
+	
+  <div class="signup" margin-top>
+   <p color="nosrezo">Pas encore de compte ? <a (click) = "register()">S'inscrire</a> </p>
+	  
+   <!--<button class="signup-button" (click) = "register()" ion-button color="white" button block outline round text-uppercase margin-top margin-bottom>S'inscrire</button>-->
+  	
+  <!--<button class="facebook-button" (click) = "facebookConnect()" ion-button block clear color="fb-color" text-uppercase margin-top margin-bottom>{{'inscriptionFacebook' | translate}}</button>-->
+	  
+  </div>
+	
+  <ion-row class="languages" text-center>
+      <ion-col width-20 offset-20> <img src="assets/images/en.png"  (click)="changeLanguage('en')" > </ion-col>
+      <ion-col width-20> <img src="assets/images/fr.png"  (click)="changeLanguage('fr')" > </ion-col>
+      <ion-col width-20> <img src="assets/images/pt.png"  (click)="changeLanguage('pt')" > </ion-col>
+  </ion-row>
+	
+
 
 </ion-content>

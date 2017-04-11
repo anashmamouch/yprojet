@@ -1,85 +1,49 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
-
 import { FilleulsPage } from '../filleuls/filleuls';
 import { PersonnelPage } from '../personnel/personnel';
 import { ParrainPage } from '../parrain/parrain';
 
-/*
-  Generated class for the Monequipe page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-monequipe',
   templateUrl: 'monequipe.html'
 })
 export class MonequipePage {
   nombreAffilieNiv1:any;
+  nombreAffilieNiv2:any; 
   nombreAffilie:any;
-
-  remunEnCours:any;
-  remunEncaisse:any;
-
-  API:any;
-  idAffiliate:any;
-  response:any;
+  recoEquipe:any; 
+  remPotentielle:any;
+  remEncaisse:any;
 
   segment:any;
-
-  params:any = {
-    id_affiliate: '',
-    first_name: '',
-    last_name: '',
-  };
 
   constructor(public navCtrl: NavController, public http:Http) {
     console.log('Hello Mon Equipe');
 
     this.segment = 'equipe';
 
-    this.API = localStorage.getItem('api');
-    this.idAffiliate = localStorage.getItem('id_affiliate');
-
-    if(localStorage.getItem('remEnCours') && localStorage.getItem('remEquipe')){
-      this.remunEnCours = localStorage.getItem('remEnCours');
-      this.remunEncaisse = localStorage.getItem('remEquipe');
+    if(localStorage.getItem('nb_reco_level_1') && localStorage.getItem('gain_potentiel') && localStorage.getItem('commission_a_encaisser') && localStorage.getItem('nb_filleul_total') && localStorage.getItem('nb_affiliate_level_1') && localStorage.getItem('nb_affiliate_level_2')){
+      this.nombreAffilieNiv1 = localStorage.getItem('nb_affiliate_level_1'); 
+      this.nombreAffilieNiv2 = localStorage.getItem('nb_affiliate_level_2'); 
+      this.nombreAffilie = localStorage.getItem('nb_filleul_total'); 
+      this.recoEquipe = localStorage.getItem('nb_reco_total'); 
+      this.remPotentielle = localStorage.getItem('gain_potentiel'); 
+      this.remEncaisse = localStorage.getItem('commission_a_encaisser');
     }else {
-      this.remunEnCours = 0;
-      this.remunEncaisse = 0;
+      this.nombreAffilieNiv1 = 0 ; 
+      this.nombreAffilieNiv2 = 0 ; 
+      this.nombreAffilie = 0 ; 
+      this.recoEquipe = 0 ; 
+      this.remPotentielle = 0 ; 
+      this.remEncaisse = 0 ;
     }
-
-    this.getData();
-  }
-
-  getData(){
-    let URL:string = "http://" +this.API+ "/Y_PROJECT/scripts/api_mobile/api_return_affilies_niv1.php?term="+this.idAffiliate;
-    let URLInfo:string = "http://" + this.API + "/Y_PROJECT/scripts/api_mobile/api_infos_affiliate.php?term="+this.idAffiliate;
-
-    this.http.get(URL).subscribe((data)=>{
-      this.response = JSON.parse(data['_body']);
-
-      console.log("data ", this.response);
-
-      this.nombreAffilieNiv1 = this.response.length;
-
-    }, (error)=>{
-      console.log("error", error);
-    });
-
-    this.http.get(URLInfo).subscribe((data) => {
-      let response = JSON.parse(data['_body']);
-
-      this.nombreAffilie = response['nbr_filleul'];
-    }, (error) => {
-      console.log("::error info::", error);
-    });
   }
 
   affilieNiv1(){
-    this.navCtrl.push(FilleulsPage, {params: this.response});
+    this.navCtrl.push(FilleulsPage);
   }
 
   selectProfile(){
@@ -87,12 +51,11 @@ export class MonequipePage {
   }
 
   selectEquipe(){
-
+    console.log('select Equipe');
   }
 
   selectParrain(){
     this.navCtrl.setRoot(ParrainPage);
   }
-
-
+  
 }

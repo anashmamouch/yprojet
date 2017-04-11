@@ -8,7 +8,6 @@ import { SwingModule } from 'angular2-swing';
 import { LoginPage } from '../pages/login/login';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { InscriptionPage } from '../pages/inscription/inscription';
-import { AproposPage } from '../pages/apropos/apropos';
 import { ParrainerPage } from '../pages/parrainer/parrainer';
 import { ProfilePage } from '../pages/profile/profile';
 import { StatistiquesPage } from '../pages/statistiques/statistiques';
@@ -20,6 +19,9 @@ import { BundlesPage } from '../pages/bundles/bundles';
 import { ContactPage } from '../pages/contact/contact';
 import { FaqPage } from '../pages/faq/faq';
 import { CguPage } from '../pages/cgu/cgu';
+import { CgiPage } from '../pages/cgi/cgi';
+import { CodebonsensPage } from '../pages/codebonsens/codebonsens';
+import { ConceptPage } from '../pages/concept/concept';
 import { ModepaiementPage} from '../pages/modepaiement/modepaiement';
 import { EntreprisePage} from '../pages/entreprise/entreprise';
 import { MotpasseoubliePage } from '../pages/motpasseoublie/motpasseoublie';
@@ -45,22 +47,65 @@ import { PacksPage } from '../pages/packs/packs';
 import { PacksHistoriquePage } from '../pages/packs-historique/packs-historique';
 import { DetailsPackPage } from '../pages/detailspack/detailspack';
 
+//NOSREZO
 import { AperorezoPage } from '../pages/aperorezo/aperorezo';
 import { MiseenrelationPage } from '../pages/miseenrelation/miseenrelation';
+import { Miseenrelation2Page } from '../pages/miseenrelation2/miseenrelation2'; 
 import { PreferencesPage } from '../pages/preferences/preferences';
 import { RecommandationsPage } from '../pages/recommandations/recommandations'; 
+import { Recommandations2Page } from '../pages/recommandations2/recommandations2'; 
+import { Recommandations3Page } from '../pages/recommandations3/recommandations3'; 
+import { PaiementPage } from '../pages/paiement/paiement'; 
+import { MajrecommandationsPage } from '../pages/majrecommandations/majrecommandations'; 
+import { Majrecommandations2Page } from '../pages/majrecommandations2/majrecommandations2'; 
+import { Majrecommandations3Page } from '../pages/majrecommandations3/majrecommandations3'; 
+import { Majrecommandations4Page } from '../pages/majrecommandations4/majrecommandations4'; 
+import { SimulateurfinancementPage } from '../pages/simulateurfinancement/simulateurfinancement'; 
+import { SimulateurnotairePage } from '../pages/simulateurnotaire/simulateurnotaire';
+import { SimulateurgainsPage } from '../pages/simulateurgains/simulateurgains'; 
+import { SimulateurrevenuPage } from '../pages/simulateurrevenu/simulateurrevenu'; 
+import { AproposPage } from '../pages/apropos/apropos'; 
+import { Miseenrelation3Page } from '../pages/miseenrelation3/miseenrelation3'; 
+import { Miseenrelation4Page } from '../pages/miseenrelation4/miseenrelation4'; 
+import { Miseenrelation41Page } from '../pages/miseenrelation41/miseenrelation41'; 
+import { Miseenrelation5Page } from '../pages/miseenrelation5/miseenrelation5'; 
+import { Miseenrelation51Page } from '../pages/miseenrelation51/miseenrelation51'; 
+import { Miseenrelation6Page } from '../pages/miseenrelation6/miseenrelation6'; 
+import { ModalPage } from '../pages/modal/modal'; 
+import { VideosPage } from '../pages/videos/videos'; 
+import { TabsPage } from '../pages/tabs/tabs'; 
+
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 //import services
 import { Api } from '../providers/api';
 import { UserService } from '../providers/user-service';
 import { ChatService } from '../providers/chat-service';
+import { YoutubeService } from '../providers/youtube-service/youtube-service';
+
+import { Youtube } from '../providers/youtube';
+import { Safe } from '../pipes/safe';
 
 //Facebook
 import { Facebook } from 'ionic-native';
 
+//http
+import { Http } from '@angular/http';
+
+//storage
+import { Storage } from '@ionic/storage';
+
+import { MultiPickerModule } from 'ion-multi-picker';
+
+
 //Components
+import { ScrollTabsComponent } from '../components/scrolltabs';
+import { ionSlideTabs } from '../components/swipedtab/swipedtab';
 import { IonProfileHeader } from '../components/ion-profile-header';
 import { FlashCardComponent } from '../components/flash-card/flash-card';
+
+//Translate
+import { TranslateService, TranslateModule, TranslateStaticLoader, TranslateLoader } from 'ng2-translate/ng2-translate';
 
 @NgModule({
   declarations: [
@@ -81,6 +126,9 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     ContactPage,
     FaqPage,
     CguPage,
+    CgiPage,
+    CodebonsensPage,
+    ConceptPage,
     MotpasseoubliePage,
     ModepaiementPage,
     EntreprisePage,
@@ -108,11 +156,39 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
 
     AperorezoPage,
     MiseenrelationPage,
+    Miseenrelation2Page,
     PreferencesPage,
     RecommandationsPage,
+    Recommandations2Page,
+    Recommandations3Page,
+    PaiementPage,
+    MajrecommandationsPage,
+    Majrecommandations2Page,
+    Majrecommandations3Page,
+    Majrecommandations4Page,
+    SimulateurfinancementPage,
+    SimulateurnotairePage,
+    SimulateurgainsPage,
+    SimulateurrevenuPage,
+    AproposPage, 
+    TabsPage,
 
+    Miseenrelation3Page,
+    Miseenrelation4Page,
+	  Miseenrelation41Page,
+    Miseenrelation5Page,
+    Miseenrelation51Page,
+    Miseenrelation6Page,
+    VideosPage,
+	  
+	  ModalPage,
+
+    ionSlideTabs,
     IonProfileHeader,
-    FlashCardComponent
+    FlashCardComponent,
+    ScrollTabsComponent,
+
+    Safe
 
   ],
   imports: [
@@ -130,8 +206,13 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
             tabsLayout: 'title-hide'
           }
         }
-      }
-      ),
+      }),
+    Ng2AutoCompleteModule,
+    TranslateModule.forRoot({
+      provide: TranslateLoader, 
+      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'), 
+      deps: [Http]
+    }),
     BrowserModule,
     SwingModule,
   ],
@@ -152,6 +233,9 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     BundlesPage,
     ContactPage,
     CguPage,
+    CgiPage,
+    CodebonsensPage,
+    ConceptPage,
     FaqPage,
     MotpasseoubliePage,
     ModepaiementPage,
@@ -177,17 +261,51 @@ import { FlashCardComponent } from '../components/flash-card/flash-card';
     PacksPage,
     PacksHistoriquePage,
     DetailsPackPage,
+    TabsPage,
 
     AperorezoPage,
     MiseenrelationPage,
+    Miseenrelation2Page,
     PreferencesPage,
     RecommandationsPage,
+    Recommandations2Page,
+    Recommandations3Page,
+    PaiementPage,
+    MajrecommandationsPage,
+    Majrecommandations2Page,
+    Majrecommandations3Page,
+    Majrecommandations4Page,
+    SimulateurfinancementPage,
+    SimulateurnotairePage,
+    SimulateurgainsPage,
+    SimulateurrevenuPage,
+    AproposPage, 
+    VideosPage,
+
+    Miseenrelation3Page,
+    Miseenrelation4Page,
+	  Miseenrelation41Page,
+    Miseenrelation5Page,
+    Miseenrelation51Page,
+    Miseenrelation6Page,
+	  
+	  ModalPage,
+
+    ionSlideTabs,
+    IonProfileHeader,
+    FlashCardComponent
+
   ],
   providers: [
+    Storage, 
     Api,
     ChatService,
     UserService,
-    Facebook
+    Facebook, 
+    TranslateService, 
+    YoutubeService, 
+
+    Youtube,
   ]
 })
 export class AppModule {}

@@ -5,12 +5,6 @@ import { ProfilePage } from '../profile/profile';
 
 import { Http } from '@angular/http';
 
-/*
-  Generated class for the Filleuls page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-filleuls',
   templateUrl: 'filleuls.html'
@@ -26,37 +20,46 @@ export class FilleulsPage {
   image:any;
 
   API:any;
+  idAffiliate:any; 
 
   constructor(public navCtrl: NavController, public http:Http, public navParams: NavParams) {
       console.log('Hello Filleuls Page');
 
-      this.filleuls = this.navParams.get('params');
       this.API = localStorage.getItem('api');
+      this.idAffiliate = localStorage.getItem('id_affiliate'); 
 
-      console.log(this.filleuls);
+      let URL = this.API + '/api_return_affilies_niv1.php?term=' + this.idAffiliate; 
+      console.log('RETURN AFFILIES', URL); 
 
-        for(let p in this.filleuls){
-          let URL = 'http://'+this.API+'/Y_PROJECT/scripts/api_mobile/api_infos_affiliate.php?term='+this.filleuls[p]['id_affiliate'];
+      this.http
+          .get(URL)
+          .subscribe(
+            data => {
+              console.log('<<<DATA>>>', data); 
+              this.filleuls = JSON.parse(data['_body']); 
 
-          this.http.get(URL).subscribe((data) => {
-            let response = JSON.parse(data['_body']);
+              for(let i = 0; i < this.filleuls.length; i++){
+                this.images.push(this.API.split("scripts")[0] + this.filleuls[i]['photo_profil']); 
+              }
 
-            var image = 'http://' + this.API + '/Y_PROJECT/' + response['photo_profil'];
-            this.images.push(image);
 
-            console.log('<<objet>>', response )
-          }, (error) => {
-            console.log("Error URL image filleuls::", error);
-          });
-
-         }
+              console.log('######################---FILLEULS---######################', this.filleuls);
+              console.log('++IMAGES++', this.images); 
+            }, 
+            error => {
+              console.log('RETURN AFFILIES ERROR', error);
+            }
+          )
       }
 
   goToProfile(index){
     let idAffiliate = this.filleuls[index]['id_affiliate'];
     let firstName = this.filleuls[index]['first_name'];
     let lastName = this.filleuls[index]['last_name'];
-    this.navCtrl.push(ProfilePage,  { id_affiliate: idAffiliate})
+
+    console.log(this.filleuls[index]); 
+
+    this.navCtrl.push(ProfilePage, {params: this.filleuls[index]}); 
   }
 
 }

@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Mes Vidéos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="card-playlist">
+  <ion-card *ngFor="let data of datas">
+    <iframe allowfullscreen frameborder="0" height="200" width="100%" [src]="data.snippet.resourceId.videoId | safe:'resourceUrl'">
+    </iframe>
+    <ion-card-content>
+      <ion-card-title class="title">
+        {{data.snippet.title}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="infiniteScrool($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

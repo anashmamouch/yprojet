@@ -22,10 +22,10 @@ export class Stats3Page {
     this.nombreFilleuls = this.navParams.get('filleuls');
   }
 
+/*
   getData(){
     this.API = localStorage.getItem('api');
     this.idAffiliate = localStorage.getItem('id_affiliate');
-
 
     let URL:string = 'http://'+this.API+'/Y_PROJECT/scripts/api_mobile/api_statistique_nbr_filleul.php?term='+this.idAffiliate;
 
@@ -82,8 +82,8 @@ export class Stats3Page {
                 "canvasBgAlpha": "0",
                 "showLabels": "1",
                 "showValues": "0",
-				"showLimits": "1",
-				"showYAxisValues": "0",
+				        "showLimits": "1",
+				        "showYAxisValues": "0",
                 "showToolTip": "0",
                 "valueFontColor": "#ffffff",
                 "baseFontColor": "#fff",
@@ -107,5 +107,6 @@ export class Stats3Page {
       }).render();
   });
 }
+*/
 
 }

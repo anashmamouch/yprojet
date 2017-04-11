@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mise en relation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	
+	<div class="profil" padding>
+	<div class="recap-relation">
+			<p color="nosrezo" ><span (click)="goToAdresse()">{{adresse}}</span> -> <span (click)="goToType()">{{type}}</span></p>
+	</div>
+	
+	
+	<div class="img-avatar" text-center margin-top>
+	<img [src]="image">
+	</div>
+	<h4 text-center margin-bottom color="nosrezo">{{prenom}} {{nom}}</h4>
+	</div>
+
+	<ion-list margin-top>
+		
+	<ion-card *ngFor="let comment of commentaires">
+
+		<ion-card-content>
+			<p><ion-icon name="ios-quote-outline"></ion-icon>	{{comment.prenom}} {{comment.nom}}.</p>			
+					{{comment.commentaire}}
+		</ion-card-content>
+
+	</ion-card>
+		
+	</ion-list>
+
+</ion-content>
+
+<ion-footer>
+
+  <button (click)="suivant()" ion-button text-uppercase clear full color="fresh" class="action-button">Valider</button>
+
+</ion-footer>

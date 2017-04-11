@@ -1,0 +1,31 @@
+page-simulateurfinancement {
+	
+	
+	font-family: 'catamaran-medium-webfont';
+	
+	.toolbar-ios, toolbar-md {
+	min-height: 60px !important;
+	}
+		
+	.toolbar-background-ios, .toolbar-background-md {
+	background-color: transparent;
+	border-bottom: none !important;	
+	}
+	
+	ion-content {
+	background: #FAFAFA !important;
+	}
+	
+	.bar-button-default-ios, .bar-button-default-md {
+	color: #4f7abd;
+	}
+	
+	.list-header-ios, .list-header-md {
+	font-size: 1.3rem;
+	background-color: transparent;
+	border-top: none;
+	text-transform: uppercase;
+	margin-bottom: 0;
+	}
+
+}

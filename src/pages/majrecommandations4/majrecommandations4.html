@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Recommandations</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  {{etapeRecoString}}<br/>
+  {{delaiRelanceString}}
+
+    <div [formGroup]="recommandationsForm">
+      <ion-item>
+          <ion-label stacked>Montant des honoraires</ion-label>
+          <ion-input formControlName="montantHonoraires" name="montantHonoraires" [(ngModel)]="montantHonoraires"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Commentaire</ion-label>
+          <ion-textarea formControlName="description" name="description" [(ngModel)]="description"></ion-textarea>
+        </ion-item>
+      </div>
+
+      <button ion-button (click)="mettreAJour()" [disabled]="!recommandationsForm.valid" block>Mettre à jour</button>
+
+</ion-content>

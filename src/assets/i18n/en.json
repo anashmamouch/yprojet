@@ -1,0 +1,20 @@
+{
+    "login" : "Log In", 
+    "motpasseoublie": "Forgot your password", 
+    "inscriptionFacebook" : "Sign up with Facebook", 
+    "compteFacebook": "You don't have a facebook account",
+
+    "accueil": "Home",
+    "Affiliés Niveau 1" : "Affiliates level 1" ,
+    "Affiliés Niveau 2" : "Affiliates level 2" ,
+	"Affiliés total équipe" : "Total team affiliates",
+
+    "mise en relation": "Relate /linking", 
+
+    "Préférences" : "Preferences" ,
+    "Français" : "French" ,
+    "Portugais" : "Portuguese" ,
+    "Anglais" : "English" ,
+    "Langue" : "Language" 
+
+}

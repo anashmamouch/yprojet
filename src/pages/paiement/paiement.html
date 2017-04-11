@@ -1,0 +1,61 @@
+<ion-header>
+	
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Paiement</ion-title>
+  </ion-navbar>
+	
+</ion-header>
+
+<ion-content>
+
+    <form #customForm="ngForm" (ngSubmit)="charge()">
+		
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked>Nom</ion-label>
+        <ion-input type="text" [(ngModel)]="inputForm.name" name="name" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>N° de la carte</ion-label>
+        <ion-input type="number" pattern="[0-9]{13,16}" [(ngModel)]="inputForm.number" name="number" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Date d'expiration</ion-label>
+        <ion-datetime min="2017" max="2030" displayFormat="MM/YYYY" [(ngModel)]="inputForm.date" name="date" required></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Cryptogramme</ion-label>
+        <ion-input type="number" [(ngModel)]="inputForm.cvc" name="cvc" required></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding>
+      <button [disabled]="!customForm.form.valid || disabled" type="submit" ion-button full color="secondary">Payer {{inputForm.amountCents/100}} {{inputForm.currency}}</button>
+    </div>
+  </form>
+
+
+  <div padding text-center *ngIf="!status.message && status.loading"><ion-spinner></ion-spinner></div>
+
+  <div padding text-center text-wrap *ngIf="status.message">
+    <p>
+      <ion-icon name="information-circle" color="danger" *ngIf="status.success != true"></ion-icon>
+      <ion-icon name="checkmark-circle" color="secondary" *ngIf="status.success == true"></ion-icon>
+    </p>
+
+    <p>
+      {{status.message}}
+    </p>
+  </div>
+
+</ion-content>
+
+
